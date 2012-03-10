@@ -7,4 +7,10 @@ package ru.spbau.shestavin.drunkers;
  * Time: 11:09 PM
  */
 public interface FieldObject {
+
+    public Cell getPosition();
+
+    public void doTurn();
+
+    public char getSymbol();
 }
