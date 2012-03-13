@@ -10,11 +10,18 @@ import java.util.List;
  * Time: 11:09 PM
  */
 public class Field {
-    private List<Cell> myCells = new ArrayList<Cell>(15 * 15);
-    //private List<FieldObject> myObjects = new ArrayList<FieldObject>();
+    private int sizeX = 15 + 2;
+    private int sizeY = 15 + 2;
+    private List<Cell> myCells = new ArrayList<Cell>(sizeX * sizeY);
 
-    public Field(){
-        //Создать объекты и поместить в соответствующие клетки
+    private static Field ourInstance = new Field();
+
+    private Field() {
+
+    }
+
+    public static Field getInstance() {
+        return ourInstance;
     }
 
     public void doTurn(){
@@ -23,6 +30,18 @@ public class Field {
                 c.getObject().doTurn();
             }
         }
+    }
+
+    public List<String> GetTextRepresentation(){
+        List<String> result = new ArrayList<String>();
+        for (int j = 0; j < this.sizeY; ++j){
+            String tmpStr = "";
+            for (int i = 0; i < this.sizeX; ++i){
+                tmpStr += this.myCells.get(j * this.sizeX + i).getSymbol();
+            }
+            result.add(tmpStr);
+        }
+        return result;
     }
 
 }
