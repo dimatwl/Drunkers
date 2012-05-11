@@ -38,7 +38,7 @@ public class PoliceStation extends FieldObject {
         Drunker closestDrunker = null;
         double minDistance = Double.MAX_VALUE;
         for (Drunker currentDrunker : this.illegalDrunkers) {
-            double currentDistance = Math.sqrt(Math.pow(this.getPosition().getCoordinates().fst - currentDrunker.getPosition().getCoordinates().fst, 2) + Math.pow(this.getPosition().getCoordinates().snd - currentDrunker.getPosition().getCoordinates().snd, 2));
+            double currentDistance = this.getPosition().distTo(currentDrunker.getPosition());
             if (currentDistance < minDistance) {
                 closestDrunker = currentDrunker;
                 minDistance = currentDistance;

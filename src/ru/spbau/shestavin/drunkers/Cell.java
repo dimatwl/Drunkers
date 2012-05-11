@@ -68,4 +68,8 @@ public class Cell {
     public void setIllumination(boolean inpIllumination) {
         this.illumination = inpIllumination;
     }
+
+    public int distTo(Cell inpCell) {
+        return Math.abs(this.coordinates.fst - inpCell.coordinates.snd) + Math.abs(this.coordinates.snd - inpCell.coordinates.snd);
+    }
 }

@@ -106,7 +106,7 @@ public class Beggar extends FieldObject {
         Bottle closestBottle = null;
         double minDistance = Double.MAX_VALUE;
         for (Bottle currentBottle : this.foundedBottles) {
-            double currentDistance = Math.sqrt(Math.pow(this.getPosition().getCoordinates().fst - currentBottle.getPosition().getCoordinates().fst, 2) + Math.pow(this.getPosition().getCoordinates().snd - currentBottle.getPosition().getCoordinates().snd, 2));
+            double currentDistance = this.getPosition().distTo(currentBottle.getPosition());
             if (currentDistance < minDistance && this.findPath(this.getPosition(), currentBottle.getPosition()) != null) {
                 closestBottle = currentBottle;
                 minDistance = currentDistance;
