@@ -3,7 +3,6 @@ package ru.spbau.shestavin.drunkers;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 /**
  * Classname:
@@ -12,14 +11,14 @@ import java.util.List;
  * Time: 12:16 AM
  */
 public class FileFieldWriter implements FieldWriter {
-    private PrintWriter myOutputWriter;
+    private PrintWriter outputWriter;
     private boolean isClosed = false;
     private Integer numberOfField = 0;
-    private final Field myField;
+    private final Field field;
 
     public FileFieldWriter(String inpFileName, Field inpField) throws IOException {
-        this.myOutputWriter = new PrintWriter(new FileWriter(inpFileName));
-        this.myField = inpField;
+        this.outputWriter = new PrintWriter(new FileWriter(inpFileName));
+        this.field = inpField;
     }
 
     @Override
@@ -27,11 +26,11 @@ public class FileFieldWriter implements FieldWriter {
         if (this.isClosed) {
             throw new IOException("Can't write to closed stream.");
         } else {
-            this.myOutputWriter.println("Turn number " + this.numberOfField.toString() + ':');
-            for (String outputString : this.myField.getTextRepresentation()) {
-                this.myOutputWriter.println(outputString);
+            this.outputWriter.println("Turn number " + this.numberOfField.toString() + ':');
+            for (String outputString : this.field.getTextRepresentation()) {
+                this.outputWriter.println(outputString);
             }
-            this.myOutputWriter.println("");
+            this.outputWriter.println("");
             ++this.numberOfField;
             this.flush();
         }
@@ -42,14 +41,14 @@ public class FileFieldWriter implements FieldWriter {
         if (this.isClosed) {
             throw new IOException("Can't flush closed stream.");
         } else {
-            this.myOutputWriter.flush();
+            this.outputWriter.flush();
         }
     }
 
     @Override
     public void close() {
         if (!isClosed) {
-            this.myOutputWriter.close();
+            this.outputWriter.close();
         }
         this.isClosed = true;
     }

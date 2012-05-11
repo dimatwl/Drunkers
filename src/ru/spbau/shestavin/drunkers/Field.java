@@ -19,7 +19,7 @@ public abstract class Field {
     private static final Pair<Integer, Integer> lampPosition = new Pair<Integer, Integer>(3 + 1, 10 + 1);
     private static final Pair<Integer, Integer> pointForGlassPosition = new Pair<Integer, Integer>(14 + 2, 4 + 1);
     private static final Integer illuminationRadius = 3;
-    private final List<Cell> myCells = new ArrayList<Cell>(this.getSizeOfRow() * this.getSizeOfCol());
+    private final List<Cell> cells = new ArrayList<Cell>(this.getSizeOfRow() * this.getSizeOfCol());
 
 
     Field() {
@@ -27,7 +27,7 @@ public abstract class Field {
             for (int j = 0; j < this.getSizeOfRow(); ++j) {
                 Cell newCell = new Cell(new Pair<Integer, Integer>(i, j));
                 newCell.setIllumination(isCellIlluminated(new Pair<Integer, Integer>(i, j)));
-                this.myCells.add(newCell);
+                this.cells.add(newCell);
                 if (!(new Pair<Integer, Integer>(i, j).equals(barPosition)) &&
                         !(new Pair<Integer, Integer>(i, j).equals(policeStationPosition)) &&
                         !(new Pair<Integer, Integer>(i, j).equals(pillarPosition)) &&
@@ -52,7 +52,7 @@ public abstract class Field {
     }
 
     Cell cellAt(Pair<Integer, Integer> inpPosition) {
-        return myCells.get(inpPosition.fst * this.getSizeOfRow() + inpPosition.snd);
+        return cells.get(inpPosition.fst * this.getSizeOfRow() + inpPosition.snd);
     }
 
     public void doTurn() {                   // Следует делать цикл по объектам, а не по клеткам.
@@ -64,7 +64,7 @@ public abstract class Field {
 
     private List<FieldObject> getObjects() {
         List<FieldObject> allObjectsOnField = new ArrayList<FieldObject>();
-        for (Cell c : this.myCells) {
+        for (Cell c : this.cells) {
             if (c.getObject() != null) {
                 allObjectsOnField.add(c.getObject());
             }

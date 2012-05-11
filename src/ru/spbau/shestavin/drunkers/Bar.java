@@ -25,7 +25,7 @@ public class Bar extends FieldObject {
                 ++this.numberOfWaitingDrunkers;
             }
         } else {
-            while (numberOfWaitingDrunkers > 0) {
+            while (this.numberOfWaitingDrunkers > 0) {
                 Cell freeCell = findFreeCell();
                 if (freeCell != null) {
                     freeCell.putObject(new Drunker(freeCell));
