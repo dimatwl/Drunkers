@@ -3,12 +3,12 @@ package ru.spbau.shestavin.drunkers;
 /**
  * Classname:
  * User: dimatwl
- * Date: 3/14/12
- * Time: 12:30 AM
+ * Date: 3/21/12
+ * Time: 3:49 PM
  */
-public class Wall extends FieldObject {
+public class Lamp extends FieldObject {
 
-    public Wall(Cell inpCell) {
+    public Lamp(Cell inpCell) {
         super(inpCell);
     }
 
@@ -19,6 +19,6 @@ public class Wall extends FieldObject {
 
     @Override
     public char getSymbolRepresentation() {
-        return '0';
+        return 'Ф';
     }
 }

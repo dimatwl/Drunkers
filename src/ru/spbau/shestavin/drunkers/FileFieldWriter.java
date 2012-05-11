@@ -11,7 +11,7 @@ import java.util.List;
  * Date: 3/14/12
  * Time: 12:16 AM
  */
-public class FileFieldWriter implements FieldWriter{
+public class FileFieldWriter implements FieldWriter {
     private PrintWriter myOutputWriter;
     private boolean isClosed = false;
     private Integer numberOfField = 0;
@@ -25,12 +25,13 @@ public class FileFieldWriter implements FieldWriter{
         if (this.isClosed) {
             throw new IOException("Can't write to closed stream.");
         } else {
-            this.myOutputWriter.println("Turn number " + this.numberOfField.toString());
+            this.myOutputWriter.println("Turn number " + this.numberOfField.toString() + ':');
             for (String outputString : inpFieldStrList) {
                 this.myOutputWriter.println(outputString);
             }
             this.myOutputWriter.println("");
             ++this.numberOfField;
+            this.flush();
         }
     }
 
