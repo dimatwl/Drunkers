@@ -19,7 +19,6 @@ public abstract class Field {
     private static final Pair<Integer, Integer> lampPosition = new Pair<Integer, Integer>(3 + 1, 10 + 1);
     private static final Pair<Integer, Integer> pointForGlassPosition = new Pair<Integer, Integer>(14 + 2, 4 + 1);
     private static final Integer illuminationRadius = 3;
-    private static final Pair<Integer, Integer> PintForGlassPosition = new Pair<Integer, Integer>(14 + 2, 4 + 1);
     private final List<Cell> myCells = new ArrayList<Cell>(this.getSizeOfRow() * this.getSizeOfCol());
 
 
