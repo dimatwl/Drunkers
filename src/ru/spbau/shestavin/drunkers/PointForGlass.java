@@ -10,10 +10,9 @@ import java.util.Set;
  * Time: 6:42 PM
  */
 public class PointForGlass extends FieldObject {
-    private final static Set<Drunker> illegalDrunkers = new HashSet<Drunker>();
     private boolean beggarOnDuty = false;
     private int numberOfTurnsBeggarNotOnDuty = 0;
-    private static int numberOfTurnsBeggarRest = 40;
+    private final static int numberOfTurnsBeggarRest = 40;
 
     public PointForGlass(Cell inpCell) {
         super(inpCell);

@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface FieldWriter {
 
-    public void writeField(List<String> inpFieldStrList) throws IOException;
+    public void writeField() throws IOException;
 
     public void flush() throws IOException;
 

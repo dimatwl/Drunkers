@@ -10,15 +10,21 @@ import java.io.IOException;
  */
 public class Main {
     public static void main(String[] args) {
-        Field myField = new HexField();
+        Field sqr = new SquareField();
+        Field hex = new HexField();
         try {
-            FieldWriter myWriter = new FileFieldWriter("test.txt");
-            myWriter.writeField(myField.getTextRepresentation());
+            FieldWriter writerForSqr = new FileFieldWriter("sqr.txt", sqr);
+            FieldWriter writerForHex = new FileFieldWriter("hex.txt", hex);
+            writerForSqr.writeField();
+            writerForHex.writeField();
             for (int i = 0; i < 1000; ++i) {
-                myField.doTurn();
-                myWriter.writeField(myField.getTextRepresentation());
+                sqr.doTurn();
+                hex.doTurn();
+                writerForSqr.writeField();
+                writerForHex.writeField();
             }
-            myWriter.close();
+            writerForSqr.close();
+            writerForHex.close();
         } catch (IOException e) {
             System.err.println("Sorry IO eror occured." + e.getMessage());
         }
