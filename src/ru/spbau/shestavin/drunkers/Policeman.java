@@ -31,7 +31,7 @@ public class Policeman extends FieldObject {
             this.myPath = findPath(this.getPosition(), this.myDestination.getPosition());
         } else if (this.myPath == null && this.myState == PolicemanState.GOING_TO_POLICE_STATION) {
             this.myPath = findPath(this.getPosition(), this.mySource.getPosition());
-        }else if (this.myPath != null) {
+        } else if (this.myPath != null) {
             if (!this.myPath.isEmpty()) {
                 Cell cellToMove = this.myPath.poll();
                 if (cellToMove != this.myDestination.getPosition() && cellToMove.isEmpty()) {

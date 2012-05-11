@@ -19,10 +19,10 @@ public class Beggar extends FieldObject {
     private final Set<Bottle> foundedBottles = new HashSet<Bottle>();
 
     private enum BeggarState {
-        HANGING_AROUND ,GOING_FOR_BOTTLE, GOING_TO_POINT_FOR_GLASS
+        HANGING_AROUND, GOING_FOR_BOTTLE, GOING_TO_POINT_FOR_GLASS
     }
 
-    public Beggar(Cell inpCell, PointForGlass inpSource){
+    public Beggar(Cell inpCell, PointForGlass inpSource) {
         super(inpCell);
         this.mySource = inpSource;
     }
@@ -30,7 +30,7 @@ public class Beggar extends FieldObject {
     @Override
     public void doTurn() {
         if (this.myState == BeggarState.HANGING_AROUND) {
-            if (this.timeToGetSomeBottles() && this.getClosestBottle() != null){
+            if (this.timeToGetSomeBottles() && this.getClosestBottle() != null) {
                 this.myDestination = this.getClosestBottle();
                 this.myState = BeggarState.GOING_FOR_BOTTLE;
                 this.doTurn();
@@ -40,12 +40,12 @@ public class Beggar extends FieldObject {
                     this.moveTo(cellToMove);
                 } else {
                     boolean isThereEmptyCell = false;
-                    for (Cell neighbour : this.getPosition().getNeighbours()){
-                        if (neighbour.isEmpty()){
+                    for (Cell neighbour : this.getPosition().getNeighbours()) {
+                        if (neighbour.isEmpty()) {
                             isThereEmptyCell = true;
                         }
                     }
-                    if (isThereEmptyCell){
+                    if (isThereEmptyCell) {
                         this.doTurn();
                     } else {
                         //Nothing to do. Just stay )
@@ -53,7 +53,7 @@ public class Beggar extends FieldObject {
                 }
             }
         } else if (this.myPath == null && this.myState == BeggarState.GOING_FOR_BOTTLE) {
-            if (this.myDestination.isOnField()){
+            if (this.myDestination.isOnField()) {
                 this.myPath = findPath(this.getPosition(), this.myDestination.getPosition());
             } else {
                 this.myState = BeggarState.HANGING_AROUND;
@@ -63,8 +63,8 @@ public class Beggar extends FieldObject {
             }
         } else if (this.myPath == null && this.myState == BeggarState.GOING_TO_POINT_FOR_GLASS) {
             this.myPath = findPath(this.getPosition(), this.mySource.getPosition());
-        } else if (this.myPath != null ) {
-            if (this.myState == BeggarState.GOING_FOR_BOTTLE && this.myDestination != null && !this.myDestination.isOnField()){
+        } else if (this.myPath != null) {
+            if (this.myState == BeggarState.GOING_FOR_BOTTLE && this.myDestination != null && !this.myDestination.isOnField()) {
                 this.myState = BeggarState.HANGING_AROUND;
                 this.myPath = null;
                 this.myDestination = null;
@@ -102,7 +102,7 @@ public class Beggar extends FieldObject {
         return 'Z';
     }
 
-    private Bottle getClosestBottle(){
+    private Bottle getClosestBottle() {
         Bottle closestBottle = null;
         double minDistance = Double.MAX_VALUE;
         for (Bottle currentBottle : this.foundedBottles) {
@@ -115,13 +115,13 @@ public class Beggar extends FieldObject {
         return closestBottle;
     }
 
-    private boolean timeToGetSomeBottles(){
+    private boolean timeToGetSomeBottles() {
         this.foundedBottles.clear();
         this.bottlesSearch(this.getPosition(), new HashSet<Cell>());
         return !this.foundedBottles.isEmpty();
     }
 
-    private Queue<Cell> findPath(Cell inpSource, Cell inpDestination){
+    private Queue<Cell> findPath(Cell inpSource, Cell inpDestination) {
         Queue<Cell> q = new LinkedList<Cell>();
         Set<Cell> used = new HashSet<Cell>();
         //Map<Cell, Integer> dist = new HashMap<Cell, Integer>();
@@ -130,10 +130,10 @@ public class Beggar extends FieldObject {
         used.add(inpSource);
         //dist.put(inpSource, 0);
         prev.put(inpSource, null);
-        while (!q.isEmpty()){
+        while (!q.isEmpty()) {
             Cell v = q.poll();
-            for (Cell neighbor : v.getNeighbours()){
-                if (!used.contains(neighbor) && (neighbor.isEmpty() || neighbor == inpDestination)){
+            for (Cell neighbor : v.getNeighbours()) {
+                if (!used.contains(neighbor) && (neighbor.isEmpty() || neighbor == inpDestination)) {
                     used.add(neighbor);
                     q.offer(neighbor);
                     //dist.put(neighbor, dist.get(v) + 1);
@@ -141,11 +141,11 @@ public class Beggar extends FieldObject {
                 }
             }
         }
-        if (!used.contains(inpDestination)){
+        if (!used.contains(inpDestination)) {
             return null;
         } else {
             LinkedList<Cell> path = new LinkedList<Cell>();
-            for (Cell v = inpDestination; prev.get(v) != null; v = prev.get(v)){
+            for (Cell v = inpDestination; prev.get(v) != null; v = prev.get(v)) {
                 path.add(v);
             }
             Collections.reverse(path);

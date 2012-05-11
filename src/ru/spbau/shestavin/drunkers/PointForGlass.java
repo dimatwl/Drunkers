@@ -28,7 +28,7 @@ public class PointForGlass extends FieldObject {
                 this.beggarOnDuty = true;
                 this.numberOfTurnsBeggarNotOnDuty = 0;
             }
-        } else if (!this.beggarOnDuty){
+        } else if (!this.beggarOnDuty) {
             ++this.numberOfTurnsBeggarNotOnDuty;
         }
         this.removeBottleNearDoor();
@@ -37,7 +37,6 @@ public class PointForGlass extends FieldObject {
     public void beggarReturned() {
         this.beggarOnDuty = false;
     }
-
 
 
     private Cell findFreeCell() {

@@ -30,10 +30,10 @@ public class HexField extends Field {
                 if (j < super.getSizeOfRow() - 1) {
                     super.cellAt(new Pair<Integer, Integer>(i, j)).addNeighbour(super.cellAt(new Pair<Integer, Integer>(i, j + 1)));
                 }
-                if (i < super.getSizeOfCol() - 1 && j > 0){
+                if (i < super.getSizeOfCol() - 1 && j > 0) {
                     super.cellAt(new Pair<Integer, Integer>(i, j)).addNeighbour(super.cellAt(new Pair<Integer, Integer>(i + 1, j - 1)));
                 }
-                if (i > 0 && j < super.getSizeOfRow() - 1){
+                if (i > 0 && j < super.getSizeOfRow() - 1) {
                     super.cellAt(new Pair<Integer, Integer>(i, j)).addNeighbour(super.cellAt(new Pair<Integer, Integer>(i - 1, j + 1)));
                 }
             }
@@ -43,17 +43,17 @@ public class HexField extends Field {
     @Override
     public List<String> getTextRepresentation() {
         List<String> result = new ArrayList<String>();
-        final int fieldWidth = 15*6 + 2*7;
+        final int fieldWidth = 15 * 6 + 2 * 7;
         //boolean increase = true;
-        for (int layerNum = 0; layerNum < super.getSizeOfCol() * 2; ++layerNum){
+        for (int layerNum = 0; layerNum < super.getSizeOfCol() * 2; ++layerNum) {
             int layerWidth = 0;
             int i = 0;
             int j = 0;
-            if (layerNum < super.getSizeOfCol()){
+            if (layerNum < super.getSizeOfCol()) {
                 layerWidth = layerNum + 1;
                 i = layerNum;
                 j = 0;
-                if (layerNum == super.getSizeOfCol() - 1){
+                if (layerNum == super.getSizeOfCol() - 1) {
                     ++layerNum;
                 }
             } else {
@@ -61,17 +61,17 @@ public class HexField extends Field {
                 i = super.getSizeOfCol() - 1;
                 j = super.getSizeOfRow() - layerWidth;
             }
-            final int currentOffset = fieldWidth/2 - 3*layerWidth + 1;
+            final int currentOffset = fieldWidth / 2 - 3 * layerWidth + 1;
             char[] spaces = new char[currentOffset];
             Arrays.fill(spaces, ' ');
-            if (layerNum == 0){
+            if (layerNum == 0) {
                 String firstStr = new String(spaces);
                 firstStr += "   .";
                 result.add(firstStr);
             }
             String fstStr = new String(spaces);
             String sndStr = new String(spaces);
-            for (int k = 0; k < layerWidth; ++k, --i, ++j){
+            for (int k = 0; k < layerWidth; ++k, --i, ++j) {
                 fstStr += ".     ";
                 sndStr += ".  " + super.cellAt(new Pair<Integer, Integer>(i, j)).getSymbol() + "  ";
             }
@@ -79,7 +79,7 @@ public class HexField extends Field {
             sndStr += '.';
             result.add(fstStr);
             result.add(sndStr);
-            if (layerNum == super.getSizeOfCol() * 2 - 1){
+            if (layerNum == super.getSizeOfCol() * 2 - 1) {
                 String lastStr = new String(spaces);
                 lastStr += "   .";
                 result.add(lastStr);

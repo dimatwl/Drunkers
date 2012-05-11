@@ -45,12 +45,12 @@ public class Drunker extends FieldObject {
             } else if (cellToMove.getObject() instanceof Drunker) {
             } else {
                 boolean isThereEmptyCell = false;
-                for (Cell neighbour : this.getPosition().getNeighbours()){
-                    if (neighbour.isEmpty()){
+                for (Cell neighbour : this.getPosition().getNeighbours()) {
+                    if (neighbour.isEmpty()) {
                         isThereEmptyCell = true;
                     }
                 }
-                if (isThereEmptyCell){
+                if (isThereEmptyCell) {
                     this.doTurn();
                 }
             }
