@@ -1,7 +1,6 @@
 package ru.spbau.shestavin.drunkers;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Classname:

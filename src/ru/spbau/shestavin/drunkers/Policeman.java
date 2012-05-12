@@ -1,6 +1,6 @@
 package ru.spbau.shestavin.drunkers;
 
-import java.util.*;
+import java.util.Queue;
 
 /**
  * Classname:

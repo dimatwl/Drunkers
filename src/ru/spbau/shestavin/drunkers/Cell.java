@@ -15,12 +15,11 @@ import java.util.List;
 public class Cell {
     private final Pair<Integer, Integer> coordinates;
     private FieldObject object;
-    private final List<Cell> neighbours;
+    private final List<Cell> neighbours = new ArrayList<Cell>();
     private boolean illumination = false;
 
     public Cell(Pair<Integer, Integer> inpCoordinates) {
         this.coordinates = inpCoordinates;
-        this.neighbours = new ArrayList<Cell>();
     }
 
     public void addNeighbour(Cell inpNeighbour) {

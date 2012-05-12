@@ -1,8 +1,5 @@
 package ru.spbau.shestavin.drunkers;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * Classname:
  * User: dimatwl

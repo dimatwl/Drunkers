@@ -1,6 +1,9 @@
 package ru.spbau.shestavin.drunkers;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Queue;
+import java.util.Random;
+import java.util.Set;
 
 /**
  * Classname:
