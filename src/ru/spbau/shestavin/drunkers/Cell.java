@@ -45,6 +45,9 @@ public class Cell {
     }
 
     public void putObject(FieldObject inpObject) {
+        if (this.object != null){
+            this.removeObject();
+        }
         this.object = inpObject;
     }
 
@@ -69,6 +72,6 @@ public class Cell {
     }
 
     public int distTo(Cell inpCell) {
-        return Math.abs(this.coordinates.fst - inpCell.coordinates.snd) + Math.abs(this.coordinates.snd - inpCell.coordinates.snd);
+        return Math.abs(this.coordinates.fst - inpCell.coordinates.fst) + Math.abs(this.coordinates.snd - inpCell.coordinates.snd);
     }
 }
