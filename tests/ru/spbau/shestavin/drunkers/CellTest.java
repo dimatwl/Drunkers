@@ -20,9 +20,9 @@ import static org.junit.Assert.*;
  * Time: 1:03 AM
  */
 public class CellTest {
-    Cell testCell = new Cell(new Pair<Integer, Integer>(0, 0));
-    FieldObject mockedObject = mock(FieldObject.class);
-    FieldObject anotherMockedObject = mock(FieldObject.class);
+    private Cell testCell = new Cell(new Pair<Integer, Integer>(0, 0));
+    private FieldObject mockedObject = mock(FieldObject.class);
+    private FieldObject anotherMockedObject = mock(FieldObject.class);
 
     @Before
     public void setUp() throws Exception {

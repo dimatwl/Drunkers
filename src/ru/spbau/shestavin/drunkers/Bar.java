@@ -17,22 +17,21 @@ public class Bar extends FieldObject {
 
     @Override
     public void doTurn() {
+        while (this.numberOfWaitingDrunkers > 0) {
+            Cell freeCell = findFreeCell();
+            if (freeCell != null) {
+                freeCell.putObject(new Drunker(freeCell));
+                --this.numberOfWaitingDrunkers;
+            } else {
+                break;
+            }
+        }
         if (this.timeToDropDrunker()) {
             Cell freeCell = findFreeCell();
             if (freeCell != null) {
                 freeCell.putObject(new Drunker(freeCell));
             } else {
                 ++this.numberOfWaitingDrunkers;
-            }
-        } else {
-            while (this.numberOfWaitingDrunkers > 0) {
-                Cell freeCell = findFreeCell();
-                if (freeCell != null) {
-                    freeCell.putObject(new Drunker(freeCell));
-                    --this.numberOfWaitingDrunkers;
-                } else {
-                    break;
-                }
             }
         }
         ++this.turnNumber;

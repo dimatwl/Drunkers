@@ -40,7 +40,7 @@ public abstract class FieldObject {
         }
     }
 
-    protected Queue<Cell> findPath(Cell inpSource, Cell inpDestination) {
+    protected static Queue<Cell> findPath(Cell inpSource, Cell inpDestination) {
         Queue<Cell> q = new LinkedList<Cell>();
         Set<Cell> used = new HashSet<Cell>();
         //Map<Cell, Integer> dist = new HashMap<Cell, Integer>();
