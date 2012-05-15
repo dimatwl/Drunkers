@@ -33,8 +33,9 @@ public class Beggar extends FieldObject {
     @Override
     public void doTurn() {
         if (this.state == BeggarState.HANGING_AROUND) {
-            if (this.timeToGetSomeBottles() && this.getClosestBottle() != null) {
-                this.destination = this.getClosestBottle();
+            Bottle closestBottle = this.getClosestBottle();
+            if (this.timeToGetSomeBottles() && closestBottle != null) {
+                this.destination = closestBottle;
                 this.state = BeggarState.GOING_FOR_BOTTLE;
                 this.doTurn();
             } else {
@@ -110,7 +111,7 @@ public class Beggar extends FieldObject {
         double minDistance = Double.MAX_VALUE;
         for (Bottle currentBottle : this.foundedBottles) {
             double currentDistance = this.getPosition().distTo(currentBottle.getPosition());
-            if (currentDistance < minDistance && this.findPath(this.getPosition(), currentBottle.getPosition()) != null) {
+            if (currentDistance < minDistance && findPath(this.getPosition(), currentBottle.getPosition()) != null) {
                 closestBottle = currentBottle;
                 minDistance = currentDistance;
             }

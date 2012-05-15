@@ -1,5 +1,6 @@
 package ru.spbau.shestavin.drunkers;
 
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -21,7 +22,7 @@ public class Drunker extends FieldObject {
     }
 
 
-    boolean isStandingSleeping() {
+    public boolean isStandingSleeping() {
         return this.state == DrunkerState.STANDING_SLEEPING;
     }
 
@@ -32,7 +33,8 @@ public class Drunker extends FieldObject {
     @Override
     public void doTurn() {
         if (this.state == DrunkerState.WITH_BOTTLE_ACTIVE || this.state == DrunkerState.NO_BOTTLE_ACTIVE) {
-            Cell cellToMove = this.getPosition().getNeighbours().get(random.nextInt(this.getPosition().getNeighbours().size()));
+            List<Cell> neighbours = this.getPosition().getNeighbours();
+            Cell cellToMove = neighbours.get(random.nextInt(neighbours.size()));
             if (cellToMove.isEmpty()) {
                 this.moveTo(cellToMove);
             } else if (cellToMove.getObject() instanceof Pillar) {
@@ -52,6 +54,8 @@ public class Drunker extends FieldObject {
                 }
                 if (isThereEmptyCell) {
                     this.doTurn();
+                } else {
+                    //Just stay.
                 }
             }
         }
@@ -73,7 +77,7 @@ public class Drunker extends FieldObject {
 
     @Override
     public char getSymbolRepresentation() {
-        char symbolRepresentation = ' ';
+        char symbolRepresentation = 'E';
         switch (this.state) {
             case WITH_BOTTLE_ACTIVE:
             case NO_BOTTLE_ACTIVE:

@@ -51,7 +51,7 @@ public abstract class Field {
                 (-illuminationRadius <= (inpCellPosition.snd - lampPosition.snd)) && (illuminationRadius >= (inpCellPosition.snd - lampPosition.snd));
     }
 
-    Cell cellAt(Pair<Integer, Integer> inpPosition) {
+    protected Cell cellAt(Pair<Integer, Integer> inpPosition) {
         return cells.get(inpPosition.fst * this.getSizeOfRow() + inpPosition.snd);
     }
 
@@ -73,11 +73,11 @@ public abstract class Field {
     }
 
 
-    int getSizeOfRow() {
+    protected int getSizeOfRow() {
         return fieldDimensions.fst;
     }
 
-    int getSizeOfCol() {
+    protected int getSizeOfCol() {
         return fieldDimensions.snd;
     }
 
