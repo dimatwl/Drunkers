@@ -42,7 +42,6 @@ public class Policeman extends FieldObject {
                 } else if (cellToMove != this.destination.getPosition() && !cellToMove.isEmpty()) {
                     this.path = null;
                 } else if (cellToMove == this.destination.getPosition() && this.state == PolicemanState.GOING_FOR_DRUNKER) {
-                    destination.getPosition().removeObject();
                     this.state = PolicemanState.GOING_TO_POLICE_STATION;
                     this.path = null;
                     this.moveTo(cellToMove);

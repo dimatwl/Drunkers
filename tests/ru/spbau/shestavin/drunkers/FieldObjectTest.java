@@ -186,4 +186,31 @@ public class FieldObjectTest {
         }
         assertNull(path);
     }
+
+    @Test
+    public void testFindPath4() throws Exception {
+        final int lineLength = 100;
+        List<Cell> line = this.getLineGraph(lineLength);
+        Queue<Cell> path = TestObject.findPath(line.get(0), line.get(0));
+        for (Cell c : line){
+            verify(c, times(1)).getNeighbours();
+        }
+        assertNotNull(path);
+        assertTrue(path.isEmpty());
+    }
+
+    @Test
+    public void testFindPath5() throws Exception {
+        final int lineLength = 100;
+        List<Cell> line = this.getLineGraph(lineLength);
+        Queue<Cell> path = TestObject.findPath(line.get(lineLength-1), line.get(0));
+        for (Cell c : line){
+            verify(c, times(1)).getNeighbours();
+        }
+        assertNotNull(path);
+        int i = lineLength - 2;
+        while (!path.isEmpty()){
+            assertSame(line.get(i--), path.poll());
+        }
+    }
 }
