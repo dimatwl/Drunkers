@@ -97,28 +97,6 @@ public class DrunkerTest {
         assertTrue(this.testDrunker.isIllegal());
     }
 
-    private List<Cell> getLineGraph(int inpVertexNum){
-        List<Cell> line = new ArrayList<Cell>();
-        line.add(mock(Cell.class));
-        line.add(mock(Cell.class));
-        List<Cell> neighboursForFirst = new ArrayList<Cell>();
-        neighboursForFirst.add(line.get(1));
-        when(line.get(0).getNeighbours()).thenReturn(neighboursForFirst);
-        when(line.get(0).isEmpty()).thenReturn(true);
-        for (int i = 1; i < inpVertexNum - 1; ++i){
-            line.add(mock(Cell.class));
-            List<Cell> neighbours = new ArrayList<Cell>();
-            neighbours.add(line.get(i+1));
-            neighbours.add(line.get(i-1));
-            when(line.get(i).getNeighbours()).thenReturn(neighbours);
-            when(line.get(i).isEmpty()).thenReturn(true);
-        }
-        List<Cell> neighboursForLast = new ArrayList<Cell>();
-        neighboursForLast.add(line.get(inpVertexNum - 2));
-        when(line.get(inpVertexNum - 1).getNeighbours()).thenReturn(neighboursForLast);
-        when(line.get(inpVertexNum - 1).isEmpty()).thenReturn(true);
-        return line;
-    }
 
     private List<Cell> getOneWayCircle(int inpVertexNum){
         List<Cell> circle = new ArrayList<Cell>();
@@ -138,7 +116,7 @@ public class DrunkerTest {
     @Test
     public void testDoTurn0() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = this.getLineGraph(lineLength);
+        List<Cell> line = LineGraph.get(lineLength);
         when(this.mockedCell.getNeighbours()).thenReturn(Arrays.asList(line.get(0)));
         assertFalse(this.testDrunker.isIllegal());
         for (int i = 0; i < 1000; ++i){

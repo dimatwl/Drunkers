@@ -118,33 +118,10 @@ public class FieldObjectTest {
         assertSame(end, path.poll());
     }
 
-    private List<Cell> getLineGraph(int inpVertexNum){
-        List<Cell> line = new ArrayList<Cell>();
-        line.add(mock(Cell.class));
-        line.add(mock(Cell.class));
-        List<Cell> neighboursForFirst = new ArrayList<Cell>();
-        neighboursForFirst.add(line.get(1));
-        when(line.get(0).getNeighbours()).thenReturn(neighboursForFirst);
-        when(line.get(0).isEmpty()).thenReturn(true);
-        for (int i = 1; i < inpVertexNum - 1; ++i){
-            line.add(mock(Cell.class));
-            List<Cell> neighbours = new ArrayList<Cell>();
-            neighbours.add(line.get(i+1));
-            neighbours.add(line.get(i-1));
-            when(line.get(i).getNeighbours()).thenReturn(neighbours);
-            when(line.get(i).isEmpty()).thenReturn(true);
-        }
-        List<Cell> neighboursForLast = new ArrayList<Cell>();
-        neighboursForLast.add(line.get(inpVertexNum - 2));
-        when(line.get(inpVertexNum - 1).getNeighbours()).thenReturn(neighboursForLast);
-        when(line.get(inpVertexNum - 1).isEmpty()).thenReturn(true);
-        return line;
-    }
-
     @Test
     public void testFindPath1() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = this.getLineGraph(lineLength);
+        List<Cell> line = LineGraph.get(lineLength);
         Queue<Cell> path = TestObject.findPath(line.get(0), line.get(lineLength - 1));
         for (Cell c : line){
             verify(c, times(1)).getNeighbours();
@@ -159,7 +136,7 @@ public class FieldObjectTest {
     @Test
     public void testFindPath2() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = this.getLineGraph(lineLength);
+        List<Cell> line = LineGraph.get(lineLength);
         InOrder inOrder = inOrder(line.toArray());
         Queue<Cell> path = TestObject.findPath(line.get(30), line.get(50));
         for (Cell c : line){
@@ -175,7 +152,7 @@ public class FieldObjectTest {
     @Test
     public void testFindPath3() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = this.getLineGraph(lineLength);
+        List<Cell> line = LineGraph.get(lineLength);
         when(line.get(lineLength/2).getNeighbours()).thenReturn(new ArrayList<Cell>());
         Queue<Cell> path = TestObject.findPath(line.get(0), line.get(lineLength - 1));
         for (int i = 0; i <= lineLength/2; ++i){
@@ -190,7 +167,7 @@ public class FieldObjectTest {
     @Test
     public void testFindPath4() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = this.getLineGraph(lineLength);
+        List<Cell> line = LineGraph.get(lineLength);
         Queue<Cell> path = TestObject.findPath(line.get(0), line.get(0));
         for (Cell c : line){
             verify(c, times(1)).getNeighbours();
@@ -202,7 +179,7 @@ public class FieldObjectTest {
     @Test
     public void testFindPath5() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = this.getLineGraph(lineLength);
+        List<Cell> line = LineGraph.get(lineLength);
         Queue<Cell> path = TestObject.findPath(line.get(lineLength-1), line.get(0));
         for (Cell c : line){
             verify(c, times(1)).getNeighbours();

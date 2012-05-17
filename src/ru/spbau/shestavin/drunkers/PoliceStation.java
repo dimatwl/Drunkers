@@ -80,7 +80,7 @@ public class PoliceStation extends FieldObject {
             this.illegalDrunkers.add((Drunker) inpStartPosition.getObject());
         } else {
             for (Cell neighbor : inpStartPosition.getNeighbours()) {
-                if (!visitedCells.contains(neighbor)) {
+                if (!visitedCells.contains(neighbor) && (neighbor.isEmpty() || neighbor.getObject() instanceof Drunker)) {
                     this.illegalDrunkerSearch(neighbor, visitedCells);
                 }
             }

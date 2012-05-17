@@ -38,40 +38,11 @@ public class PolicemanTest {
 
     }
 
-    private List<Cell> getLineGraph(int inpVertexNum){
-        List<Cell> line = new ArrayList<Cell>();
-        line.add(mock(Cell.class));
-        line.add(mock(Cell.class));
-        List<Cell> neighboursForFirst = new ArrayList<Cell>();
-        neighboursForFirst.add(line.get(1));
-        when(line.get(0).getNeighbours()).thenReturn(neighboursForFirst);
-        when(line.get(0).isEmpty()).thenReturn(true);
-        for (int i = 1; i < inpVertexNum - 1; ++i){
-            line.add(mock(Cell.class));
-            List<Cell> neighbours = new ArrayList<Cell>();
-            neighbours.add(line.get(i+1));
-            neighbours.add(line.get(i-1));
-            when(line.get(i).getNeighbours()).thenReturn(neighbours);
-            when(line.get(i).isEmpty()).thenReturn(true);
-        }
-        List<Cell> neighboursForLast = new ArrayList<Cell>();
-        neighboursForLast.add(line.get(inpVertexNum - 2));
-        when(line.get(inpVertexNum - 1).getNeighbours()).thenReturn(neighboursForLast);
-        when(line.get(inpVertexNum - 1).isEmpty()).thenReturn(true);
-        return line;
-    }
-
-    private List<Cell> getCircleGraph(int inpVertexNum){
-        List<Cell> circle = this.getLineGraph(inpVertexNum);
-        when(circle.get(0).getNeighbours()).thenReturn(Arrays.asList(circle.get(1), circle.get(circle.size() - 1)));
-        when(circle.get(circle.size() - 1).getNeighbours()).thenReturn(Arrays.asList(circle.get(0), circle.get(circle.size() - 2)));
-        return circle;
-    }
 
     @Test
     public void testDoTurn0() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = this.getLineGraph(lineLength);
+        List<Cell> line = LineGraph.get(lineLength);
         when(this.freeCell.getNeighbours()).thenReturn(Arrays.asList(this.stationCell, line.get(0)));
         when(line.get(0).getNeighbours()).thenReturn(Arrays.asList(this.freeCell, line.get(1)));
         when(this.mockedDrunker.getPosition()).thenReturn(line.get(lineLength - 1));
@@ -106,7 +77,7 @@ public class PolicemanTest {
     @Test
     public void testDoTurn1() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = this.getLineGraph(lineLength);
+        List<Cell> line = LineGraph.get(lineLength);
         when(this.freeCell.getNeighbours()).thenReturn(Arrays.asList(this.stationCell, line.get(0)));
         when(line.get(0).getNeighbours()).thenReturn(Arrays.asList(this.freeCell, line.get(1)));
         when(this.mockedDrunker.getPosition()).thenReturn(line.get(lineLength - 1));
@@ -151,7 +122,7 @@ public class PolicemanTest {
     @Test
     public void testDoTurn2() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = this.getLineGraph(lineLength);
+        List<Cell> line = LineGraph.get(lineLength);
         when(this.freeCell.getNeighbours()).thenReturn(Arrays.asList(this.stationCell, line.get(0)));
         when(line.get(0).getNeighbours()).thenReturn(Arrays.asList(this.freeCell, line.get(1)));
         when(this.mockedDrunker.getPosition()).thenReturn(line.get(lineLength - 1));
