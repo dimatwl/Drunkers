@@ -1,7 +1,6 @@
 package ru.spbau.shestavin.drunkers.abstraction;
 
 import com.sun.tools.javac.util.Pair;
-import ru.spbau.shestavin.drunkers.NoSuchPositionException;
 import ru.spbau.shestavin.drunkers.buildings.*;
 
 import java.util.ArrayList;
@@ -49,22 +48,20 @@ public abstract class Field {
                 Cell newCell = new Cell(new Pair<Integer, Integer>(i, j));
                 newCell.setIllumination(isCellIlluminated(new Pair<Integer, Integer>(i, j)));
                 this.cells.add(newCell);
-                if (!(new Pair<Integer, Integer>(i, j).equals(barPosition)) &&
-                        !(new Pair<Integer, Integer>(i, j).equals(policeStationPosition)) &&
-                        !(new Pair<Integer, Integer>(i, j).equals(pillarPosition)) &&
-                        !(new Pair<Integer, Integer>(i, j).equals(lampPosition)) &&
-                        !(new Pair<Integer, Integer>(i, j).equals(pointForGlassPosition))) {
-                    if ((i == 0 || i == this.getSizeOfCol() + 1) || ((j == 0 || j == this.getSizeOfRow() + 1))) {
-                        this.cellAt(new Pair<Integer, Integer>(i, j)).putObject(new Wall(this.cellAt(new Pair<Integer, Integer>(i, j))));
-                    }
+                if (i == 0 || i == this.getSizeOfCol() + 1 || j == 0 || j == this.getSizeOfRow() + 1) {
+                    this.cellAt(new Pair<Integer, Integer>(i, j)).putObject(new Wall());
                 }
             }
         }
-        this.cellAt(barPosition).putObject(new Bar(this.cellAt(barPosition)));
-        this.cellAt(policeStationPosition).putObject(new PoliceStation(this.cellAt(policeStationPosition)));
-        this.cellAt(pillarPosition).putObject(new Pillar(this.cellAt(pillarPosition)));
-        this.cellAt(lampPosition).putObject(new Lamp(this.cellAt(lampPosition)));
-        this.cellAt(pointForGlassPosition).putObject(new PointForGlass(this.cellAt(pointForGlassPosition)));
+        try {
+            this.putObjectOutsideField(barPosition, new Bar());
+            this.putObjectOutsideField(policeStationPosition, new PoliceStation());
+            this.putObjectOnField(pillarPosition, new Pillar());
+            this.putObjectOnField(lampPosition, new Lamp());
+            this.putObjectOutsideField(pointForGlassPosition, new PointForGlass());
+        } catch (NoSuchPositionException e) {
+            System.err.println("That's can't be!");
+        }
     }
 
 
@@ -74,7 +71,7 @@ public abstract class Field {
     }
 
     protected Cell cellAt(Pair<Integer, Integer> inpPosition) {
-        return cells.get(inpPosition.fst * this.getSizeOfRow() + inpPosition.snd);
+        return cells.get(inpPosition.fst * (this.getSizeOfRow() + 2) + inpPosition.snd);
     }
 
     public void doTurn() {                   // Следует делать цикл по объектам, а не по клеткам.

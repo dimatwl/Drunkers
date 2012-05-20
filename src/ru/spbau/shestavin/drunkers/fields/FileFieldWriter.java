@@ -1,6 +1,7 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.fields;
 
 import ru.spbau.shestavin.drunkers.abstraction.Field;
+import ru.spbau.shestavin.drunkers.abstraction.FieldWriter;
 
 import java.io.FileWriter;
 import java.io.IOException;

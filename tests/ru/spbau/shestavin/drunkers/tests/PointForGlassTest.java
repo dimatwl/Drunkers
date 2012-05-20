@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentMatcher;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 import ru.spbau.shestavin.drunkers.abstraction.Cell;
 import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
 import ru.spbau.shestavin.drunkers.buildings.PointForGlass;
@@ -18,7 +20,7 @@ import static org.mockito.Mockito.*;
 
 public class PointForGlassTest {
     private Cell pointCell = mock(Cell.class);
-    private PointForGlass testPoint = new PointForGlass(pointCell);
+    private PointForGlass testPoint = new PointForGlass();
     private Cell freeCell = mock(Cell.class);
 
     @Before
@@ -26,6 +28,18 @@ public class PointForGlassTest {
         when(this.freeCell.getNeighbours()).thenReturn(Arrays.asList(this.pointCell));
         when(this.pointCell.getNeighbours()).thenReturn(Arrays.asList(this.freeCell));
         when(this.freeCell.isEmpty()).thenReturn(true);
+        doAnswer(new Answer<PointForGlass>() {
+            public PointForGlass answer(InvocationOnMock invocation) throws Throwable {
+                invocation.callRealMethod();
+                return null;
+            }
+        }).when(pointCell).putObject(argThat(new ArgumentMatcher<PointForGlass>() {
+            @Override
+            public boolean matches(Object argument) {
+                return argument instanceof PointForGlass;
+            }
+        }));
+        pointCell.putObject(this.testPoint);
     }
 
     @After

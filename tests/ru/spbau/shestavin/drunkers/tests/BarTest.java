@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentMatcher;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 import ru.spbau.shestavin.drunkers.abstraction.Cell;
 import ru.spbau.shestavin.drunkers.buildings.Bar;
 import ru.spbau.shestavin.drunkers.characters.Drunker;
@@ -18,7 +20,7 @@ import static org.mockito.Mockito.*;
 public class BarTest {
     private Cell mockedCell = mock(Cell.class);
     private Cell freeCell = mock(Cell.class);
-    private Bar testBar = new Bar(mockedCell);
+    private Bar testBar = new Bar();
 
     @Before
     public void setUp() throws Exception {
@@ -27,6 +29,18 @@ public class BarTest {
         List<Cell> neighbours = new ArrayList<Cell>();
         neighbours.add(freeCell);
         when(this.mockedCell.getNeighbours()).thenReturn(neighbours);
+        doAnswer(new Answer<Bar>() {
+            public Bar answer(InvocationOnMock invocation) throws Throwable {
+                invocation.callRealMethod();
+                return null;
+            }
+        }).when(mockedCell).putObject(argThat(new ArgumentMatcher<Bar>() {
+            @Override
+            public boolean matches(Object argument) {
+                return argument instanceof Bar;
+            }
+        }));
+        mockedCell.putObject(this.testBar);
     }
 
     @After

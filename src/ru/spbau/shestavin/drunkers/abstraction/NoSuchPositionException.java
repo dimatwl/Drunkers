@@ -1,4 +1,4 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.abstraction;
 
 /**
  * Classname:

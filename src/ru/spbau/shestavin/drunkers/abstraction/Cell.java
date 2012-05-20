@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Cell {
     private final Pair<Integer, Integer> coordinates;
-    private FieldObject object;
+    private FieldObject object = null;
     private final List<Cell> neighbours = new ArrayList<Cell>();
     private boolean illumination = false;
 

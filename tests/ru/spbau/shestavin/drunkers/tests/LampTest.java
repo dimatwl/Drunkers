@@ -10,7 +10,7 @@ import static org.mockito.Mockito.mock;
 
 public class LampTest {
     private Cell mockedCell = mock(Cell.class);
-    private Lamp testLamp = new Lamp(mockedCell);
+    private Lamp testLamp = new Lamp();
 
     @Test
     public void testGetSymbolRepresentation() throws Exception {

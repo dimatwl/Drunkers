@@ -26,7 +26,7 @@ public class PoliceStationTest {
     private Cell freeCell = mock(Cell.class);
     private Drunker mockedDrunker = mock(Drunker.class);
     private Drunker mockedDrunker2 = mock(Drunker.class);
-    private PoliceStation testStation = new PoliceStation(stationCell);
+    private PoliceStation testStation = new PoliceStation();
 
     private Policeman policeman = null;
 
@@ -35,6 +35,19 @@ public class PoliceStationTest {
         when(this.freeCell.getNeighbours()).thenReturn(Arrays.asList(this.stationCell));
         when(this.stationCell.getNeighbours()).thenReturn(Arrays.asList(this.freeCell));
         when(this.freeCell.isEmpty()).thenReturn(true);
+
+        doAnswer(new Answer<PoliceStation>() {
+            public PoliceStation answer(InvocationOnMock invocation) throws Throwable {
+                invocation.callRealMethod();
+                return null;
+            }
+        }).when(stationCell).putObject(argThat(new ArgumentMatcher<PoliceStation>() {
+            @Override
+            public boolean matches(Object argument) {
+                return argument instanceof PoliceStation;
+            }
+        }));
+        stationCell.putObject(this.testStation);
     }
 
     @After

@@ -11,8 +11,8 @@ public class PointForGlass extends FieldObject {
     private int numberOfTurnsBeggarNotOnDuty = 0;
     private final static int numberOfTurnsBeggarRest = 40;
 
-    public PointForGlass(Cell inpCell) {
-        super(inpCell);
+    public PointForGlass() {
+        super();
     }
 
     @Override

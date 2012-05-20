@@ -1,6 +1,8 @@
 package ru.spbau.shestavin.drunkers;
 
 import ru.spbau.shestavin.drunkers.abstraction.Field;
+import ru.spbau.shestavin.drunkers.abstraction.FieldWriter;
+import ru.spbau.shestavin.drunkers.fields.FileFieldWriter;
 import ru.spbau.shestavin.drunkers.fields.HexField;
 import ru.spbau.shestavin.drunkers.fields.SquareField;
 

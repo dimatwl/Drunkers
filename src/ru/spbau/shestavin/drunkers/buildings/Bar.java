@@ -10,8 +10,8 @@ public class Bar extends FieldObject {
     private int numberOfWaitingDrunkers = 0;
     private static final int turnsBetweenDrunkers = 20;
 
-    public Bar(Cell inpCell) {
-        super(inpCell);
+    public Bar() {
+        super();
     }
 
     @Override

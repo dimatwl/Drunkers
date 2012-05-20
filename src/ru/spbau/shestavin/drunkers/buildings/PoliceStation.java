@@ -13,8 +13,8 @@ public class PoliceStation extends FieldObject {
     private final Set<Drunker> illegalDrunkers = new HashSet<Drunker>();
     private boolean policemanOnDuty = false;
 
-    public PoliceStation(Cell inpCell) {
-        super(inpCell);
+    public PoliceStation() {
+        super();
     }
 
     @Override
