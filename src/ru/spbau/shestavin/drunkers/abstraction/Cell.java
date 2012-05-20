@@ -1,4 +1,4 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.abstraction;
 
 
 import com.sun.tools.javac.util.Pair;
@@ -6,12 +6,7 @@ import com.sun.tools.javac.util.Pair;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 3/10/12
- * Time: 11:13 PM
- */
+
 public class Cell {
     private final Pair<Integer, Integer> coordinates;
     private FieldObject object;
@@ -49,6 +44,7 @@ public class Cell {
             this.removeObject();
         }
         this.object = inpObject;
+        inpObject.putOnField(this);
     }
 
     public boolean isEmpty() {

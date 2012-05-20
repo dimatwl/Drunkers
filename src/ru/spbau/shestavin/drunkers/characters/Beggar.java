@@ -1,16 +1,13 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.characters;
+
+import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
+import ru.spbau.shestavin.drunkers.buildings.PointForGlass;
 
 import java.util.HashSet;
 import java.util.Queue;
 import java.util.Random;
 import java.util.Set;
-
-/**
- * Classname:
- * User: dimatwl
- * Date: 3/30/12
- * Time: 6:33 PM
- */
 
 
 public class Beggar extends FieldObject {

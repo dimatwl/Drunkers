@@ -1,16 +1,13 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.tests;
 
 import org.junit.Test;
+import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.buildings.Lamp;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 5/15/12
- * Time: 12:47 PM
- */
+
 public class LampTest {
     private Cell mockedCell = mock(Cell.class);
     private Lamp testLamp = new Lamp(mockedCell);

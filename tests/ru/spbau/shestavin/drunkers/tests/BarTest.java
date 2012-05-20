@@ -1,9 +1,12 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.tests;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentMatcher;
+import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.buildings.Bar;
+import ru.spbau.shestavin.drunkers.characters.Drunker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +14,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 5/12/12
- * Time: 12:57 PM
- */
+
 public class BarTest {
     private Cell mockedCell = mock(Cell.class);
     private Cell freeCell = mock(Cell.class);

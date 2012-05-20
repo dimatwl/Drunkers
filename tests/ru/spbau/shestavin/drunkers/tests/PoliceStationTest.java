@@ -1,4 +1,4 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.tests;
 
 import org.junit.After;
 import org.junit.Before;
@@ -6,6 +6,12 @@ import org.junit.Test;
 import org.mockito.ArgumentMatcher;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
+import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
+import ru.spbau.shestavin.drunkers.buildings.PoliceStation;
+import ru.spbau.shestavin.drunkers.buildings.Wall;
+import ru.spbau.shestavin.drunkers.characters.Drunker;
+import ru.spbau.shestavin.drunkers.characters.Policeman;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,12 +20,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.*;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 5/16/12
- * Time: 1:13 PM
- */
+
 public class PoliceStationTest {
     private Cell stationCell = mock(Cell.class);
     private Cell freeCell = mock(Cell.class);

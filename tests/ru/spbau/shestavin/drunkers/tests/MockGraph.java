@@ -1,4 +1,6 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.tests;
+
+import ru.spbau.shestavin.drunkers.abstraction.Cell;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,12 +9,7 @@ import java.util.List;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 5/16/12
- * Time: 1:38 PM
- */
+
 public class MockGraph {
     public static List<Cell> getLine(int inpVertexNum) {
         List<Cell> line = new ArrayList<Cell>();

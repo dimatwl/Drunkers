@@ -1,9 +1,11 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.tests;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
+import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,15 +14,10 @@ import java.util.Queue;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 5/13/12
- * Time: 10:23 AM
- */
+
 public class FieldObjectTest {
 
-    private class TestObject extends FieldObject {
+    private static class TestObject extends FieldObject {
 
         public TestObject(Cell inpCell) {
             super(inpCell);
@@ -34,6 +31,15 @@ public class FieldObjectTest {
         @Override
         public char getSymbolRepresentation() {
             return ' ';
+        }
+
+        @Override
+        public void moveTo(Cell inpCell) {
+            super.moveTo(inpCell);
+        }
+
+        public static Queue<Cell> findPath(Cell inpSource, Cell inpDestination) {
+            return FieldObject.findPath(inpSource, inpDestination);
         }
 
     }

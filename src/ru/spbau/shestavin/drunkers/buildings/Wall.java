@@ -1,11 +1,9 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.buildings;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 3/14/12
- * Time: 12:30 AM
- */
+
+import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
+
 public class Wall extends FieldObject {
 
     public Wall(Cell inpCell) {

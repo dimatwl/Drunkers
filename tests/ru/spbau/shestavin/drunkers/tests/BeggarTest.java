@@ -1,8 +1,13 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.tests;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
+import ru.spbau.shestavin.drunkers.buildings.PointForGlass;
+import ru.spbau.shestavin.drunkers.characters.Beggar;
+import ru.spbau.shestavin.drunkers.characters.Bottle;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,12 +16,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.*;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 5/15/12
- * Time: 9:06 AM
- */
+
 public class BeggarTest {
 
     private Cell mockedCell = mock(Cell.class);

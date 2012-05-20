@@ -1,14 +1,14 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.buildings;
+
+import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
+import ru.spbau.shestavin.drunkers.characters.Drunker;
+import ru.spbau.shestavin.drunkers.characters.Policeman;
 
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 3/14/12
- * Time: 1:17 AM
- */
+
 public class PoliceStation extends FieldObject {
     private final Set<Drunker> illegalDrunkers = new HashSet<Drunker>();
     private boolean policemanOnDuty = false;

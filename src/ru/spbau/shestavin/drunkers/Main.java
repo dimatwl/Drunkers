@@ -1,13 +1,12 @@
 package ru.spbau.shestavin.drunkers;
 
+import ru.spbau.shestavin.drunkers.abstraction.Field;
+import ru.spbau.shestavin.drunkers.fields.HexField;
+import ru.spbau.shestavin.drunkers.fields.SquareField;
+
 import java.io.IOException;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 3/21/12
- * Time: 4:30 PM
- */
+
 public class Main {
     public static void main(String[] args) {
         Field sqr = new SquareField();

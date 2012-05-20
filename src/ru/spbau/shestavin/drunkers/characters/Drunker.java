@@ -1,14 +1,13 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.characters;
+
+import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
+import ru.spbau.shestavin.drunkers.buildings.Pillar;
 
 import java.util.List;
 import java.util.Random;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 3/21/12
- * Time: 4:42 PM
- */
+
 public class Drunker extends FieldObject {
     private DrunkerState state = DrunkerState.WITH_BOTTLE_ACTIVE;
     private static final Random random = new Random();

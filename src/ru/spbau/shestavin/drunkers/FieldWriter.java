@@ -2,12 +2,7 @@ package ru.spbau.shestavin.drunkers;
 
 import java.io.IOException;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 3/11/12
- * Time: 8:04 AM
- */
+
 public interface FieldWriter {
 
     public void writeField() throws IOException;

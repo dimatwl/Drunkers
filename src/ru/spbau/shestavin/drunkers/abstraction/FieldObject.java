@@ -1,18 +1,18 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.abstraction;
+
 
 import java.util.*;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 3/10/12
- * Time: 11:09 PM
- */
+
 public abstract class FieldObject {
     private Cell cell;
 
-    public FieldObject(Cell inpCell) {
-        cell = inpCell;
+    protected FieldObject(Cell inpCell) {
+        this.cell = inpCell;
+    }
+
+    public FieldObject() {
+        this.cell = null;
     }
 
     public Cell getPosition() {
@@ -27,9 +27,14 @@ public abstract class FieldObject {
         return this.cell != null;
     }
 
+    void putOnField(Cell inpCell) {
+        this.cell = inpCell;
+    }
+
     public void removeFromField() {
         this.cell = null;
     }
+
 
     protected void moveTo(Cell inpCell) {
         if (this.cell != null && inpCell != null) {

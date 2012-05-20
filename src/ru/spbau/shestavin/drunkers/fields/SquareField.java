@@ -1,16 +1,11 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.fields;
 
 import com.sun.tools.javac.util.Pair;
+import ru.spbau.shestavin.drunkers.abstraction.Field;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 3/19/12
- * Time: 11:41 PM
- */
 public class SquareField extends Field {
 
     public SquareField() {

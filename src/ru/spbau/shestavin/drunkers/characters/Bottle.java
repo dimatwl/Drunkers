@@ -1,11 +1,9 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.characters;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 3/21/12
- * Time: 5:17 PM
- */
+
+import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
+
 public class Bottle extends FieldObject {
 
     public Bottle(Cell inpCell) {

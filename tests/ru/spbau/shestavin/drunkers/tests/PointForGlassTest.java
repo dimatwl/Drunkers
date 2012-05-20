@@ -1,21 +1,21 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.tests;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentMatcher;
+import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
+import ru.spbau.shestavin.drunkers.buildings.PointForGlass;
+import ru.spbau.shestavin.drunkers.characters.Beggar;
+import ru.spbau.shestavin.drunkers.characters.Policeman;
 
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 5/20/12
- * Time: 11:55 AM
- */
+
 public class PointForGlassTest {
     private Cell pointCell = mock(Cell.class);
     private PointForGlass testPoint = new PointForGlass(pointCell);

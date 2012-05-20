@@ -1,13 +1,12 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.characters;
+
+import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
+import ru.spbau.shestavin.drunkers.buildings.PoliceStation;
 
 import java.util.Queue;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 3/28/12
- * Time: 1:18 PM
- */
+
 public class Policeman extends FieldObject {
     private final Drunker destination;
     private final PoliceStation source;

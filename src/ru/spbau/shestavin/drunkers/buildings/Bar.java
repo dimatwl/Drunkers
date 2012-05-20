@@ -1,11 +1,10 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.buildings;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 3/14/12
- * Time: 1:15 AM
- */
+
+import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
+import ru.spbau.shestavin.drunkers.characters.Drunker;
+
 public class Bar extends FieldObject {
     private int turnNumber = 0;
     private int numberOfWaitingDrunkers = 0;

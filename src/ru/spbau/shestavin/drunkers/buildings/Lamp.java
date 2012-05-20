@@ -1,11 +1,9 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.buildings;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 3/21/12
- * Time: 3:49 PM
- */
+
+import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
+
 public class Lamp extends FieldObject {
 
     public Lamp(Cell inpCell) {

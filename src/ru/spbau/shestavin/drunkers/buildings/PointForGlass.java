@@ -1,11 +1,11 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.buildings;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 3/30/12
- * Time: 6:42 PM
- */
+
+import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
+import ru.spbau.shestavin.drunkers.characters.Beggar;
+import ru.spbau.shestavin.drunkers.characters.Bottle;
+
 public class PointForGlass extends FieldObject {
     private boolean beggarOnDuty = false;
     private int numberOfTurnsBeggarNotOnDuty = 0;

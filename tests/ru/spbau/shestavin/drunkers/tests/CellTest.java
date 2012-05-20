@@ -1,22 +1,19 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.tests;
 
 import com.sun.tools.javac.util.Pair;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
+import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
 
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 5/12/12
- * Time: 1:03 AM
- */
+
 public class CellTest {
     private Cell testCell = new Cell(new Pair<Integer, Integer>(0, 0));
     private FieldObject mockedObject = mock(FieldObject.class);

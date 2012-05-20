@@ -1,15 +1,12 @@
 package ru.spbau.shestavin.drunkers;
 
+import ru.spbau.shestavin.drunkers.abstraction.Field;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 3/14/12
- * Time: 12:16 AM
- */
+
 public class FileFieldWriter implements FieldWriter {
     private PrintWriter outputWriter;
     private boolean isClosed = false;

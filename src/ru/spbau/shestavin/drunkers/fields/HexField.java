@@ -1,17 +1,13 @@
-package ru.spbau.shestavin.drunkers;
+package ru.spbau.shestavin.drunkers.fields;
 
 import com.sun.tools.javac.util.Pair;
+import ru.spbau.shestavin.drunkers.abstraction.Field;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Classname:
- * User: dimatwl
- * Date: 5/10/12
- * Time: 3:04 PM
- */
+
 public class HexField extends Field {
 
     public HexField() {
