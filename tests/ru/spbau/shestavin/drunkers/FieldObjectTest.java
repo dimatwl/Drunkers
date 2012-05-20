@@ -1,17 +1,16 @@
 package ru.spbau.shestavin.drunkers;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Queue;
 
-import static org.mockito.Mockito.*;
-
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 /**
  * Classname:
@@ -21,20 +20,20 @@ import static org.junit.Assert.*;
  */
 public class FieldObjectTest {
 
-    private class TestObject extends FieldObject{
+    private class TestObject extends FieldObject {
 
-        public TestObject(Cell inpCell){
+        public TestObject(Cell inpCell) {
             super(inpCell);
         }
 
         @Override
-        public void doTurn(){
+        public void doTurn() {
 
         }
 
         @Override
-        public char getSymbolRepresentation(){
-            return  ' ';
+        public char getSymbolRepresentation() {
+            return ' ';
         }
 
     }
@@ -121,12 +120,12 @@ public class FieldObjectTest {
         final int lineLength = 100;
         List<Cell> line = MockGraph.getLine(lineLength);
         Queue<Cell> path = TestObject.findPath(line.get(0), line.get(lineLength - 1));
-        for (Cell c : line){
+        for (Cell c : line) {
             verify(c, times(1)).getNeighbours();
         }
         assertNotNull(path);
         int i = 1;
-        while (!path.isEmpty()){
+        while (!path.isEmpty()) {
             assertSame(line.get(i++), path.poll());
         }
     }
@@ -137,12 +136,12 @@ public class FieldObjectTest {
         List<Cell> line = MockGraph.getLine(lineLength);
         InOrder inOrder = inOrder(line.toArray());
         Queue<Cell> path = TestObject.findPath(line.get(30), line.get(50));
-        for (Cell c : line){
+        for (Cell c : line) {
             verify(c, times(1)).getNeighbours();
         }
         assertNotNull(path);
         int i = 31;
-        while (!path.isEmpty()){
+        while (!path.isEmpty()) {
             assertSame(line.get(i++), path.poll());
         }
     }
@@ -151,12 +150,12 @@ public class FieldObjectTest {
     public void testFindPath3() throws Exception {
         final int lineLength = 100;
         List<Cell> line = MockGraph.getLine(lineLength);
-        when(line.get(lineLength/2).getNeighbours()).thenReturn(new ArrayList<Cell>());
+        when(line.get(lineLength / 2).getNeighbours()).thenReturn(new ArrayList<Cell>());
         Queue<Cell> path = TestObject.findPath(line.get(0), line.get(lineLength - 1));
-        for (int i = 0; i <= lineLength/2; ++i){
+        for (int i = 0; i <= lineLength / 2; ++i) {
             verify(line.get(i), times(1)).getNeighbours();
         }
-        for (int i = lineLength/2 + 1; i < lineLength; ++i){
+        for (int i = lineLength / 2 + 1; i < lineLength; ++i) {
             verify(line.get(i), never()).getNeighbours();
         }
         assertNull(path);
@@ -167,7 +166,7 @@ public class FieldObjectTest {
         final int lineLength = 100;
         List<Cell> line = MockGraph.getLine(lineLength);
         Queue<Cell> path = TestObject.findPath(line.get(0), line.get(0));
-        for (Cell c : line){
+        for (Cell c : line) {
             verify(c, times(1)).getNeighbours();
         }
         assertNotNull(path);
@@ -178,13 +177,13 @@ public class FieldObjectTest {
     public void testFindPath5() throws Exception {
         final int lineLength = 100;
         List<Cell> line = MockGraph.getLine(lineLength);
-        Queue<Cell> path = TestObject.findPath(line.get(lineLength-1), line.get(0));
-        for (Cell c : line){
+        Queue<Cell> path = TestObject.findPath(line.get(lineLength - 1), line.get(0));
+        for (Cell c : line) {
             verify(c, times(1)).getNeighbours();
         }
         assertNotNull(path);
         int i = lineLength - 2;
-        while (!path.isEmpty()){
+        while (!path.isEmpty()) {
             assertSame(line.get(i--), path.poll());
         }
     }

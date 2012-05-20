@@ -7,7 +7,6 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.*;
@@ -44,7 +43,7 @@ public class BeggarTest {
         final int lineLength = 100;
         List<Cell> line = MockGraph.getLine(lineLength);
         when(this.mockedCell.getNeighbours()).thenReturn(Arrays.asList(line.get(0)));
-        for (int i = 0; i < 10; ++i){
+        for (int i = 0; i < 10; ++i) {
             this.testBeggar.doTurn();
         }
         verify(this.mockedCell, atLeastOnce()).getNeighbours();
@@ -64,7 +63,7 @@ public class BeggarTest {
         verify(this.mockedCell, times(1)).removeObject();
         verify(circle.get(0), times(1)).removeObject();
         verify(circle.get(0), times(1)).putObject(this.testBeggar);
-        for (int i = 0; i < circleLength; ++i){
+        for (int i = 0; i < circleLength; ++i) {
             this.testBeggar.doTurn();
         }
         assertEquals(circle.get(0), this.testBeggar.getPosition());
@@ -74,7 +73,7 @@ public class BeggarTest {
         verify(circle.get(0), atLeastOnce()).getNeighbours();
         verify(circle.get(0), times(3)).removeObject();
         verify(circle.get(0), times(2)).putObject(this.testBeggar);
-        for (int i = 1; i < circleLength; ++i){
+        for (int i = 1; i < circleLength; ++i) {
             verify(circle.get(i), atLeastOnce()).getNeighbours();
             verify(circle.get(i), times(2)).removeObject();
             verify(circle.get(i), times(1)).putObject(this.testBeggar);
@@ -110,22 +109,22 @@ public class BeggarTest {
         when(this.mockedCell.getNeighbours()).thenReturn(Arrays.asList(this.pointCell, line.get(0)));
         when(line.get(0).getNeighbours()).thenReturn(Arrays.asList(this.mockedCell, line.get(1)));
         when(this.mockedBottle.getPosition()).thenReturn(line.get(lineLength - 1));
-        when(line.get(lineLength-1).getObject()).thenReturn(this.mockedBottle);
-        when(line.get(lineLength-1).isEmpty()).thenReturn(false);
+        when(line.get(lineLength - 1).getObject()).thenReturn(this.mockedBottle);
+        when(line.get(lineLength - 1).isEmpty()).thenReturn(false);
         when(this.mockedBottle.isOnField()).thenReturn(true);
 
         assertSame(this.mockedCell, this.testBeggar.getPosition());
         this.testBeggar.doTurn();
-        for (int i = 0; i < lineLength; ++i){
+        for (int i = 0; i < lineLength; ++i) {
             this.testBeggar.doTurn();
             assertSame(line.get(i), this.testBeggar.getPosition());
         }
         when(this.mockedCell.getObject()).thenReturn(null);
         when(this.mockedCell.isEmpty()).thenReturn(true);
-        verify(line.get(lineLength-1), times(1)).removeObject();
+        verify(line.get(lineLength - 1), times(1)).removeObject();
         this.testBeggar.doTurn();
         assertSame(line.get(lineLength - 1), this.testBeggar.getPosition());
-        for (int i = lineLength - 2; i >= 0; --i){
+        for (int i = lineLength - 2; i >= 0; --i) {
             this.testBeggar.doTurn();
             assertSame(line.get(i), this.testBeggar.getPosition());
         }

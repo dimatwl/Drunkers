@@ -46,6 +46,7 @@ public abstract class Field {
         this.cellAt(pointForGlassPosition).putObject(new PointForGlass(this.cellAt(pointForGlassPosition)));
     }
 
+
     private boolean isCellIlluminated(Pair<Integer, Integer> inpCellPosition) {
         return (-illuminationRadius <= (inpCellPosition.fst - lampPosition.fst)) && (illuminationRadius >= (inpCellPosition.fst - lampPosition.fst)) &&
                 (-illuminationRadius <= (inpCellPosition.snd - lampPosition.snd)) && (illuminationRadius >= (inpCellPosition.snd - lampPosition.snd));

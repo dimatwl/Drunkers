@@ -8,9 +8,8 @@ import org.mockito.ArgumentMatcher;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
-
-import static org.junit.Assert.*;
 
 /**
  * Classname:
@@ -98,7 +97,7 @@ public class BarTest {
     public void testDoTurn4() throws Exception {
         final int numberOfTurnns = 98;
         when(this.freeCell.isEmpty()).thenReturn(false);
-        for (int i = 0; i < numberOfTurnns; ++i){
+        for (int i = 0; i < numberOfTurnns; ++i) {
             this.testBar.doTurn();
         }
         verify(this.mockedCell, times(numberOfTurnns + 4)).getNeighbours();

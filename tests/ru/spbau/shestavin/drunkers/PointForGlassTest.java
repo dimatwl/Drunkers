@@ -34,27 +34,27 @@ public class PointForGlassTest {
     }
 
     @Test
-        public void testDoTurn0() throws Exception {
-            verify(this.freeCell, never()).putObject((FieldObject)anyObject());
-            for(int i = 0; i < 40; ++i){
-                this.testPoint.doTurn();
-                verify(this.freeCell, never()).putObject((FieldObject)anyObject());
+    public void testDoTurn0() throws Exception {
+        verify(this.freeCell, never()).putObject((FieldObject) anyObject());
+        for (int i = 0; i < 40; ++i) {
+            this.testPoint.doTurn();
+            verify(this.freeCell, never()).putObject((FieldObject) anyObject());
+        }
+        this.testPoint.doTurn();
+        verify(this.freeCell, times(1)).putObject(argThat(new ArgumentMatcher<Beggar>() {
+            @Override
+            public boolean matches(Object argument) {
+                return argument instanceof Beggar;
             }
+        }));
+        for (int i = 0; i < 100; ++i) {
             this.testPoint.doTurn();
-            verify(this.freeCell, times(1)).putObject(argThat(new ArgumentMatcher<Beggar>() {
-                @Override
-                public boolean matches(Object argument) {
-                    return argument instanceof Beggar;
-                }
-            }));
-        for(int i = 0; i < 100; ++i){
-            this.testPoint.doTurn();
-            verify(this.freeCell, times(1)).putObject((FieldObject)anyObject());
+            verify(this.freeCell, times(1)).putObject((FieldObject) anyObject());
         }
         this.testPoint.beggarReturned();
-        for(int i = 0; i < 40; ++i){
+        for (int i = 0; i < 40; ++i) {
             this.testPoint.doTurn();
-            verify(this.freeCell, times(1)).putObject((FieldObject)anyObject());
+            verify(this.freeCell, times(1)).putObject((FieldObject) anyObject());
         }
         this.testPoint.doTurn();
         verify(this.freeCell, times(2)).putObject(argThat(new ArgumentMatcher<Beggar>() {
@@ -68,10 +68,10 @@ public class PointForGlassTest {
     @Test
     public void testDoTurn1() throws Exception {
         when(this.freeCell.isEmpty()).thenReturn(false);
-        verify(this.freeCell, never()).putObject((FieldObject)anyObject());
-        for(int i = 0; i < 100; ++i){
+        verify(this.freeCell, never()).putObject((FieldObject) anyObject());
+        for (int i = 0; i < 100; ++i) {
             this.testPoint.doTurn();
-            verify(this.freeCell, never()).putObject((FieldObject)anyObject());
+            verify(this.freeCell, never()).putObject((FieldObject) anyObject());
         }
         when(this.freeCell.isEmpty()).thenReturn(true);
         this.testPoint.doTurn();
@@ -82,7 +82,6 @@ public class PointForGlassTest {
             }
         }));
     }
-
 
 
     @Test

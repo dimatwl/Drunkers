@@ -45,7 +45,7 @@ public class Cell {
     }
 
     public void putObject(FieldObject inpObject) {
-        if (this.object != null){
+        if (this.object != null) {
             this.removeObject();
         }
         this.object = inpObject;

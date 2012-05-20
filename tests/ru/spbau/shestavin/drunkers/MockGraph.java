@@ -14,7 +14,7 @@ import static org.mockito.Mockito.when;
  * Time: 1:38 PM
  */
 public class MockGraph {
-    public static List<Cell> getLine(int inpVertexNum){
+    public static List<Cell> getLine(int inpVertexNum) {
         List<Cell> line = new ArrayList<Cell>();
         line.add(mock(Cell.class));
         line.add(mock(Cell.class));
@@ -22,11 +22,11 @@ public class MockGraph {
         neighboursForFirst.add(line.get(1));
         when(line.get(0).getNeighbours()).thenReturn(neighboursForFirst);
         when(line.get(0).isEmpty()).thenReturn(true);
-        for (int i = 1; i < inpVertexNum - 1; ++i){
+        for (int i = 1; i < inpVertexNum - 1; ++i) {
             line.add(mock(Cell.class));
             List<Cell> neighbours = new ArrayList<Cell>();
-            neighbours.add(line.get(i+1));
-            neighbours.add(line.get(i-1));
+            neighbours.add(line.get(i + 1));
+            neighbours.add(line.get(i - 1));
             when(line.get(i).getNeighbours()).thenReturn(neighbours);
             when(line.get(i).isEmpty()).thenReturn(true);
         }
@@ -37,11 +37,11 @@ public class MockGraph {
         return line;
     }
 
-    public static List<Cell> getOneWayCircle(int inpVertexNum){
+    public static List<Cell> getOneWayCircle(int inpVertexNum) {
         List<Cell> circle = new ArrayList<Cell>();
         circle.add(mock(Cell.class));
         when(circle.get(0).isEmpty()).thenReturn(true);
-        for (int i = 0; i < inpVertexNum - 1; ++i){
+        for (int i = 0; i < inpVertexNum - 1; ++i) {
             circle.add(mock(Cell.class));
             when(circle.get(i).getNeighbours()).thenReturn(Arrays.asList(circle.get(i + 1)));
             when(circle.get(i).isEmpty()).thenReturn(true);

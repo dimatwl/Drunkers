@@ -7,11 +7,9 @@ import org.junit.Test;
 import org.mockito.InOrder;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import static org.mockito.Mockito.*;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 /**
  * Classname:
@@ -147,13 +145,13 @@ public class CellTest {
 
     @Test
     public void testDistTo() throws Exception {
-        assertEquals(0, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(0,0))));
-        assertEquals(1, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(1,0))));
-        assertEquals(1, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(0,1))));
-        assertEquals(2, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(1,1))));
-        assertEquals(10, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(10,0))));
-        assertEquals(10, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(0,10))));
-        assertEquals(20, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(10,10))));
-        assertEquals(11, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(4,7))));
+        assertEquals(0, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(0, 0))));
+        assertEquals(1, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(1, 0))));
+        assertEquals(1, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(0, 1))));
+        assertEquals(2, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(1, 1))));
+        assertEquals(10, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(10, 0))));
+        assertEquals(10, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(0, 10))));
+        assertEquals(20, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(10, 10))));
+        assertEquals(11, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(4, 7))));
     }
 }

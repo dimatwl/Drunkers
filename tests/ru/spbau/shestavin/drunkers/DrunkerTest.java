@@ -4,13 +4,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.mockito.Mockito.*;
-
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 
 /**
@@ -101,7 +99,7 @@ public class DrunkerTest {
         List<Cell> line = MockGraph.getLine(lineLength);
         when(this.mockedCell.getNeighbours()).thenReturn(Arrays.asList(line.get(0)));
         assertFalse(this.testDrunker.isIllegal());
-        for (int i = 0; i < 1000; ++i){
+        for (int i = 0; i < 1000; ++i) {
             this.testDrunker.doTurn();
         }
         verify(this.mockedCell, times(1)).getNeighbours();
@@ -123,7 +121,7 @@ public class DrunkerTest {
         verify(circle.get(0), never()).getNeighbours();
         verify(circle.get(0), times(1)).removeObject();
         verify(circle.get(0), times(1)).putObject(this.testDrunker);
-        for (int i = 0; i < circleLength; ++i){
+        for (int i = 0; i < circleLength; ++i) {
             this.testDrunker.doTurn();
         }
         assertEquals(circle.get(0), this.testDrunker.getPosition());
@@ -133,7 +131,7 @@ public class DrunkerTest {
         verify(circle.get(0), times(1)).getNeighbours();
         verify(circle.get(0), times(3)).removeObject();
         verify(circle.get(0), times(2)).putObject(this.testDrunker);
-        for (int i = 1; i < circleLength; ++i){
+        for (int i = 1; i < circleLength; ++i) {
             verify(circle.get(i), times(1)).getNeighbours();
             verify(circle.get(i), times(2)).removeObject();
             verify(circle.get(i), times(1)).putObject(this.testDrunker);
