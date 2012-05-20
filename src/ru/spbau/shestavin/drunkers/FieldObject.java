@@ -55,7 +55,7 @@ public abstract class FieldObject {
                 if (!used.contains(neighbor) && (neighbor.isEmpty() || neighbor == inpDestination)) {
                     used.add(neighbor);
                     q.offer(neighbor);
-                    //dist.put(neighbor, dist.get(v) + 1);
+                    //dist.put(neighbor, dist.getLine(v) + 1);
                     prev.put(neighbor, v);
                 }
             }

@@ -3,9 +3,6 @@ package ru.spbau.shestavin.drunkers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.ArgumentMatcher;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -98,25 +95,10 @@ public class DrunkerTest {
     }
 
 
-    private List<Cell> getOneWayCircle(int inpVertexNum){
-        List<Cell> circle = new ArrayList<Cell>();
-        circle.add(mock(Cell.class));
-        when(circle.get(0).isEmpty()).thenReturn(true);
-        for (int i = 0; i < inpVertexNum - 1; ++i){
-            circle.add(mock(Cell.class));
-            when(circle.get(i).getNeighbours()).thenReturn(Arrays.asList(circle.get(i+1)));
-            when(circle.get(i).isEmpty()).thenReturn(true);
-        }
-        when(circle.get(inpVertexNum - 1).getNeighbours()).thenReturn(Arrays.asList(circle.get(0)));
-        when(circle.get(inpVertexNum - 1).isEmpty()).thenReturn(true);
-        return circle;
-    }
-
-
     @Test
     public void testDoTurn0() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = LineGraph.get(lineLength);
+        List<Cell> line = MockGraph.getLine(lineLength);
         when(this.mockedCell.getNeighbours()).thenReturn(Arrays.asList(line.get(0)));
         assertFalse(this.testDrunker.isIllegal());
         for (int i = 0; i < 1000; ++i){
@@ -132,7 +114,7 @@ public class DrunkerTest {
     @Test
     public void testDoTurn1() throws Exception {
         final int circleLength = 100;
-        List<Cell> circle = this.getOneWayCircle(circleLength);
+        List<Cell> circle = MockGraph.getOneWayCircle(circleLength);
         when(this.mockedCell.getNeighbours()).thenReturn(Arrays.asList(circle.get(0)));
         assertFalse(this.testDrunker.isIllegal());
         this.testDrunker.doTurn();

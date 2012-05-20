@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -42,7 +41,7 @@ public class PolicemanTest {
     @Test
     public void testDoTurn0() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = LineGraph.get(lineLength);
+        List<Cell> line = MockGraph.getLine(lineLength);
         when(this.freeCell.getNeighbours()).thenReturn(Arrays.asList(this.stationCell, line.get(0)));
         when(line.get(0).getNeighbours()).thenReturn(Arrays.asList(this.freeCell, line.get(1)));
         when(this.mockedDrunker.getPosition()).thenReturn(line.get(lineLength - 1));
@@ -77,7 +76,7 @@ public class PolicemanTest {
     @Test
     public void testDoTurn1() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = LineGraph.get(lineLength);
+        List<Cell> line = MockGraph.getLine(lineLength);
         when(this.freeCell.getNeighbours()).thenReturn(Arrays.asList(this.stationCell, line.get(0)));
         when(line.get(0).getNeighbours()).thenReturn(Arrays.asList(this.freeCell, line.get(1)));
         when(this.mockedDrunker.getPosition()).thenReturn(line.get(lineLength - 1));
@@ -122,7 +121,7 @@ public class PolicemanTest {
     @Test
     public void testDoTurn2() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = LineGraph.get(lineLength);
+        List<Cell> line = MockGraph.getLine(lineLength);
         when(this.freeCell.getNeighbours()).thenReturn(Arrays.asList(this.stationCell, line.get(0)));
         when(line.get(0).getNeighbours()).thenReturn(Arrays.asList(this.freeCell, line.get(1)));
         when(this.mockedDrunker.getPosition()).thenReturn(line.get(lineLength - 1));

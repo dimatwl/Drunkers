@@ -7,7 +7,6 @@ import org.mockito.ArgumentMatcher;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -46,43 +45,23 @@ public class PoliceStationTest {
     @Test
     public void testDoTurn0() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = LineGraph.get(lineLength);
+        List<Cell> line = MockGraph.getLine(lineLength);
         when(this.freeCell.getNeighbours()).thenReturn(Arrays.asList(this.stationCell, line.get(0)));
         when(line.get(0).getNeighbours()).thenReturn(Arrays.asList(this.freeCell, line.get(1)));
-        verify(this.freeCell, never()).putObject(argThat(new ArgumentMatcher<Policeman>() {
-            @Override
-            public boolean matches(Object argument) {
-                return true;
-            }
-        }));
+        verify(this.freeCell, never()).putObject((FieldObject)anyObject());
         for (int i = 0; i < 100; ++i){
             this.testStation.doTurn();
         }
-        verify(this.freeCell, never()).putObject(argThat(new ArgumentMatcher<Policeman>() {
-            @Override
-            public boolean matches(Object argument) {
-                return true;
-            }
-        }));
+        verify(this.freeCell, never()).putObject((FieldObject)anyObject());
 
         when(this.mockedDrunker.getPosition()).thenReturn(line.get(lineLength - 1));
         when(line.get(lineLength-1).getObject()).thenReturn(this.mockedDrunker);
         when(line.get(lineLength-1).isEmpty()).thenReturn(false);
         this.testStation.doTurn();
-        verify(this.freeCell, never()).putObject(argThat(new ArgumentMatcher<Policeman>() {
-            @Override
-            public boolean matches(Object argument) {
-                return true;
-            }
-        }));
+        verify(this.freeCell, never()).putObject((FieldObject)anyObject());
         when(this.mockedDrunker.isIllegal()).thenReturn(true);
         this.testStation.doTurn();
-        verify(this.freeCell, never()).putObject(argThat(new ArgumentMatcher<Policeman>() {
-            @Override
-            public boolean matches(Object argument) {
-                return true;
-            }
-        }));
+        verify(this.freeCell, never()).putObject((FieldObject)anyObject());
         when(line.get(lineLength-1).isIlluminated()).thenReturn(true);
         this.testStation.doTurn();
         verify(this.freeCell, times(1)).putObject(argThat(new ArgumentMatcher<Policeman>() {
@@ -96,7 +75,7 @@ public class PoliceStationTest {
     @Test
     public void testDoTurn1() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = LineGraph.get(lineLength);
+        List<Cell> line = MockGraph.getLine(lineLength);
         when(this.freeCell.getNeighbours()).thenReturn(Arrays.asList(this.stationCell, line.get(0)));
         when(line.get(0).getNeighbours()).thenReturn(Arrays.asList(this.freeCell, line.get(1)));
         when(this.mockedDrunker.getPosition()).thenReturn(line.get(lineLength - 1));
@@ -132,7 +111,7 @@ public class PoliceStationTest {
     @Test
     public void testDoTurn2() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = LineGraph.get(lineLength);
+        List<Cell> line = MockGraph.getLine(lineLength);
         when(this.freeCell.getNeighbours()).thenReturn(Arrays.asList(this.stationCell, line.get(0)));
         when(line.get(0).getNeighbours()).thenReturn(Arrays.asList(this.freeCell, line.get(1)));
         when(this.mockedDrunker.getPosition()).thenReturn(line.get(lineLength - 1));
@@ -167,8 +146,8 @@ public class PoliceStationTest {
     public void testDoTurn3() throws Exception {
         final int line1Length = 100;
         final int line2Length = 50;
-        List<Cell> line1 = LineGraph.get(line1Length);
-        List<Cell> line2 = LineGraph.get(line2Length);
+        List<Cell> line1 = MockGraph.getLine(line1Length);
+        List<Cell> line2 = MockGraph.getLine(line2Length);
         when(this.freeCell.getNeighbours()).thenReturn(Arrays.asList(this.stationCell, line1.get(0), line2.get(0)));
         when(line1.get(0).getNeighbours()).thenReturn(Arrays.asList(this.freeCell, line1.get(1)));
         when(line2.get(0).getNeighbours()).thenReturn(Arrays.asList(this.freeCell, line2.get(1)));
@@ -182,7 +161,8 @@ public class PoliceStationTest {
         when(this.mockedDrunker2.isIllegal()).thenReturn(true);
         when(line1.get(line1Length-1).isIlluminated()).thenReturn(true);
         when(line2.get(line2Length-1).isIlluminated()).thenReturn(true);
-
+        when(stationCell.distTo(line1.get(line1Length-1))).thenReturn(101);
+        when(stationCell.distTo(line2.get(line2Length-1))).thenReturn(51);
 
         doAnswer(new Answer<Policeman>() {
             public Policeman answer(InvocationOnMock invocation) {
@@ -208,20 +188,11 @@ public class PoliceStationTest {
 
         this.policeman.doTurn(); //Здесь должен быть ход полицейского
         
-        verify(line2.get(0), times(1)).putObject(argThat(new ArgumentMatcher<Policeman>() {
-            @Override
-            public boolean matches(Object argument) {
-                return argument instanceof Policeman;
-            }
-        }));
+        verify(line2.get(0), times(1)).putObject(this.policeman);
 
         verify(line1.get(0), never()).putObject(this.policeman);
     }
 
-    @Test
-    public void testPolicemanReturned() throws Exception {
-
-    }
 
     @Test
     public void testGetSymbolRepresentation() throws Exception {

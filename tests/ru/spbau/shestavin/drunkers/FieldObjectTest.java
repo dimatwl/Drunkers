@@ -1,6 +1,5 @@
 package ru.spbau.shestavin.drunkers;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
@@ -8,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
 
-import java.util.ArrayList;
 import java.util.Queue;
 
 import static org.mockito.Mockito.*;
@@ -121,7 +119,7 @@ public class FieldObjectTest {
     @Test
     public void testFindPath1() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = LineGraph.get(lineLength);
+        List<Cell> line = MockGraph.getLine(lineLength);
         Queue<Cell> path = TestObject.findPath(line.get(0), line.get(lineLength - 1));
         for (Cell c : line){
             verify(c, times(1)).getNeighbours();
@@ -136,7 +134,7 @@ public class FieldObjectTest {
     @Test
     public void testFindPath2() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = LineGraph.get(lineLength);
+        List<Cell> line = MockGraph.getLine(lineLength);
         InOrder inOrder = inOrder(line.toArray());
         Queue<Cell> path = TestObject.findPath(line.get(30), line.get(50));
         for (Cell c : line){
@@ -152,7 +150,7 @@ public class FieldObjectTest {
     @Test
     public void testFindPath3() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = LineGraph.get(lineLength);
+        List<Cell> line = MockGraph.getLine(lineLength);
         when(line.get(lineLength/2).getNeighbours()).thenReturn(new ArrayList<Cell>());
         Queue<Cell> path = TestObject.findPath(line.get(0), line.get(lineLength - 1));
         for (int i = 0; i <= lineLength/2; ++i){
@@ -167,7 +165,7 @@ public class FieldObjectTest {
     @Test
     public void testFindPath4() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = LineGraph.get(lineLength);
+        List<Cell> line = MockGraph.getLine(lineLength);
         Queue<Cell> path = TestObject.findPath(line.get(0), line.get(0));
         for (Cell c : line){
             verify(c, times(1)).getNeighbours();
@@ -179,7 +177,7 @@ public class FieldObjectTest {
     @Test
     public void testFindPath5() throws Exception {
         final int lineLength = 100;
-        List<Cell> line = LineGraph.get(lineLength);
+        List<Cell> line = MockGraph.getLine(lineLength);
         Queue<Cell> path = TestObject.findPath(line.get(lineLength-1), line.get(0));
         for (Cell c : line){
             verify(c, times(1)).getNeighbours();

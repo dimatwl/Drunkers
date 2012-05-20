@@ -80,7 +80,6 @@ public class Beggar extends FieldObject {
                     this.source.beggarReturned();
                     this.getPosition().removeObject();
                 } else if (this.destination != null && cellToMove == this.destination.getPosition() && this.state == BeggarState.GOING_FOR_BOTTLE) {
-                    destination.getPosition().removeObject();
                     this.state = BeggarState.GOING_TO_POINT_FOR_GLASS;
                     this.path = null;
                     this.moveTo(cellToMove);
