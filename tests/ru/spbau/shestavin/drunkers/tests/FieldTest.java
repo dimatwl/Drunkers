@@ -1,9 +1,11 @@
-package ru.spbau.shestavin.drunkers.abstraction;
+package ru.spbau.shestavin.drunkers.tests;
 
 import com.sun.tools.javac.util.Pair;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.abstraction.Field;
 import ru.spbau.shestavin.drunkers.buildings.*;
 
 import java.util.ArrayList;
@@ -25,6 +27,16 @@ public class FieldTest {
         @Override
         public Cell cellAt(Pair<Integer, Integer> inpPosition) {
             return super.cellAt(inpPosition);
+        }
+
+        @Override
+        public int getSizeOfRow() {
+            return super.getSizeOfRow();
+        }
+
+        @Override
+        public int getSizeOfCol() {
+            return super.getSizeOfCol();
         }
 
     }

@@ -55,7 +55,7 @@ public class BeggarTest {
 
     @Test
     public void testDoTurn1() throws Exception {
-        final int circleLength = 100;
+        final int circleLength = 10;
         List<Cell> circle = MockGraph.getOneWayCircle(circleLength);
         when(this.mockedCell.getNeighbours()).thenReturn(Arrays.asList(circle.get(0)));
         this.testBeggar.doTurn();
