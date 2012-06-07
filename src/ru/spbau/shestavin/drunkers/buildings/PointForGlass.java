@@ -1,10 +1,10 @@
 package ru.spbau.shestavin.drunkers.buildings;
 
 
-import ru.spbau.shestavin.drunkers.abstraction.Cell;
-import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
 import ru.spbau.shestavin.drunkers.characters.Beggar;
 import ru.spbau.shestavin.drunkers.characters.Bottle;
+import ru.spbau.shestavin.drunkers.core.Cell;
+import ru.spbau.shestavin.drunkers.core.FieldObject;
 
 public class PointForGlass extends FieldObject {
     private boolean beggarOnDuty = false;

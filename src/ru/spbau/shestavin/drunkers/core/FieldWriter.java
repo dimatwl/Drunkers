@@ -1,4 +1,4 @@
-package ru.spbau.shestavin.drunkers.abstraction;
+package ru.spbau.shestavin.drunkers.core;
 
 import java.io.IOException;
 

@@ -1,8 +1,8 @@
 package ru.spbau.shestavin.drunkers.characters;
 
-import ru.spbau.shestavin.drunkers.abstraction.Cell;
-import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
 import ru.spbau.shestavin.drunkers.buildings.PointForGlass;
+import ru.spbau.shestavin.drunkers.core.Cell;
+import ru.spbau.shestavin.drunkers.core.FieldObject;
 
 import java.util.HashSet;
 import java.util.Queue;
@@ -81,6 +81,7 @@ public class Beggar extends FieldObject {
                     this.path = null;
                     this.moveTo(cellToMove);
                     this.destination = null;
+                    this.foundedBottles.clear();
                 } else {
                     this.path = null;
                 }
@@ -106,6 +107,9 @@ public class Beggar extends FieldObject {
         Bottle closestBottle = null;
         double minDistance = Double.MAX_VALUE;
         for (Bottle currentBottle : this.foundedBottles) {
+            if (currentBottle.getPosition() == null) {
+                int t = 5;
+            }
             double currentDistance = this.getPosition().distTo(currentBottle.getPosition());
             if (currentDistance < minDistance && findPath(this.getPosition(), currentBottle.getPosition()) != null) {
                 closestBottle = currentBottle;

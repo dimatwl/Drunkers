@@ -3,7 +3,7 @@ package ru.spbau.shestavin.drunkers.tests;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.core.Cell;
 import ru.spbau.shestavin.drunkers.buildings.Pillar;
 import ru.spbau.shestavin.drunkers.characters.Bottle;
 import ru.spbau.shestavin.drunkers.characters.Drunker;

@@ -1,6 +1,6 @@
 package ru.spbau.shestavin.drunkers.tests;
 
-import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.core.Cell;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -4,8 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
-import ru.spbau.shestavin.drunkers.abstraction.Cell;
-import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
+import ru.spbau.shestavin.drunkers.core.Cell;
+import ru.spbau.shestavin.drunkers.core.FieldObject;
 
 import java.util.ArrayList;
 import java.util.List;

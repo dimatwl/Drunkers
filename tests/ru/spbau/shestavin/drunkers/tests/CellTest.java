@@ -1,13 +1,13 @@
 package ru.spbau.shestavin.drunkers.tests;
 
-import com.sun.tools.javac.util.Pair;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
-import ru.spbau.shestavin.drunkers.abstraction.Cell;
-import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
+import ru.spbau.shestavin.drunkers.core.Cell;
+import ru.spbau.shestavin.drunkers.core.FieldObject;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -15,7 +15,7 @@ import static org.mockito.Mockito.*;
 
 
 public class CellTest {
-    private Cell testCell = new Cell(new Pair<Integer, Integer>(0, 0));
+    private Cell testCell = new Cell(new Point(0, 0));
     private FieldObject mockedObject = mock(FieldObject.class);
     private FieldObject anotherMockedObject = mock(FieldObject.class);
 
@@ -32,8 +32,8 @@ public class CellTest {
 
     @Test
     public void testAddNeighbour() throws Exception {
-        Cell neighbour0 = new Cell(new Pair<Integer, Integer>(1, 1));
-        Cell neighbour1 = new Cell(new Pair<Integer, Integer>(2, 2));
+        Cell neighbour0 = new Cell(new Point(1, 1));
+        Cell neighbour1 = new Cell(new Point(2, 2));
         assertTrue(this.testCell.getNeighbours().isEmpty());
         assertFalse(this.testCell.getNeighbours().contains(neighbour0));
         this.testCell.addNeighbour(neighbour0);
@@ -47,21 +47,21 @@ public class CellTest {
     @Test
     public void testGetNeighbours() throws Exception {
         assertTrue(this.testCell.getNeighbours() instanceof ArrayList);
-        Cell neighbour0 = new Cell(new Pair<Integer, Integer>(1, 1));
+        Cell neighbour0 = new Cell(new Point(1, 1));
         this.testCell.addNeighbour(neighbour0);
         assertTrue(this.testCell.getNeighbours() instanceof ArrayList);
-        Cell neighbour1 = new Cell(new Pair<Integer, Integer>(2, 2));
+        Cell neighbour1 = new Cell(new Point(2, 2));
         this.testCell.addNeighbour(neighbour1);
         assertTrue(this.testCell.getNeighbours() instanceof ArrayList);
     }
 
     @Test
     public void testGetCoordinates() throws Exception {
-        assertTrue(this.testCell.getCoordinates() instanceof Pair);
-        assertEquals(this.testCell.getCoordinates(), new Pair<Integer, Integer>(0, 0));
-        Cell another = new Cell(new Pair<Integer, Integer>(1, 1));
-        assertTrue(another.getCoordinates() instanceof Pair);
-        assertEquals(another.getCoordinates(), new Pair<Integer, Integer>(1, 1));
+        assertTrue(this.testCell.getCoordinates() instanceof Point);
+        assertEquals(this.testCell.getCoordinates(), new Point(0, 0));
+        Cell another = new Cell(new Point(1, 1));
+        assertTrue(another.getCoordinates() instanceof Point);
+        assertEquals(another.getCoordinates(), new Point(1, 1));
     }
 
     @Test
@@ -142,13 +142,13 @@ public class CellTest {
 
     @Test
     public void testDistTo() throws Exception {
-        assertEquals(0, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(0, 0))));
-        assertEquals(1, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(1, 0))));
-        assertEquals(1, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(0, 1))));
-        assertEquals(2, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(1, 1))));
-        assertEquals(10, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(10, 0))));
-        assertEquals(10, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(0, 10))));
-        assertEquals(20, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(10, 10))));
-        assertEquals(11, this.testCell.distTo(new Cell(new Pair<Integer, Integer>(4, 7))));
+        assertEquals(0, this.testCell.distTo(new Cell(new Point(0, 0))));
+        assertEquals(1, this.testCell.distTo(new Cell(new Point(1, 0))));
+        assertEquals(1, this.testCell.distTo(new Cell(new Point(0, 1))));
+        assertEquals(2, this.testCell.distTo(new Cell(new Point(1, 1))));
+        assertEquals(10, this.testCell.distTo(new Cell(new Point(10, 0))));
+        assertEquals(10, this.testCell.distTo(new Cell(new Point(0, 10))));
+        assertEquals(20, this.testCell.distTo(new Cell(new Point(10, 10))));
+        assertEquals(11, this.testCell.distTo(new Cell(new Point(4, 7))));
     }
 }

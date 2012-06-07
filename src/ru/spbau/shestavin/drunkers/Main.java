@@ -1,18 +1,20 @@
 package ru.spbau.shestavin.drunkers;
 
-import ru.spbau.shestavin.drunkers.abstraction.Field;
-import ru.spbau.shestavin.drunkers.abstraction.FieldWriter;
+import ru.spbau.shestavin.drunkers.core.Field;
+import ru.spbau.shestavin.drunkers.core.FieldWriter;
 import ru.spbau.shestavin.drunkers.fields.FileFieldWriter;
-import ru.spbau.shestavin.drunkers.fields.HexField;
-import ru.spbau.shestavin.drunkers.fields.SquareField;
+import ru.spbau.shestavin.drunkers.fields.HexFieldFactory;
+import ru.spbau.shestavin.drunkers.fields.SquareFieldFactory;
 
 import java.io.IOException;
 
 
 public class Main {
     public static void main(String[] args) {
-        Field sqr = new SquareField();
-        Field hex = new HexField();
+        SquareFieldFactory squareFactory = new SquareFieldFactory();
+        HexFieldFactory hexFactory = new HexFieldFactory();
+        Field sqr = squareFactory.createRegularField();
+        Field hex = hexFactory.createRegularField();
         try {
             FieldWriter writerForSqr = new FileFieldWriter("sqr.txt", sqr);
             FieldWriter writerForHex = new FileFieldWriter("hex.txt", hex);

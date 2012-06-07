@@ -1,8 +1,8 @@
 package ru.spbau.shestavin.drunkers.characters;
 
 
-import ru.spbau.shestavin.drunkers.abstraction.Cell;
-import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
+import ru.spbau.shestavin.drunkers.core.Cell;
+import ru.spbau.shestavin.drunkers.core.FieldObject;
 
 public class Bottle extends FieldObject {
 

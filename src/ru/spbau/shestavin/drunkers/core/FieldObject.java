@@ -1,4 +1,4 @@
-package ru.spbau.shestavin.drunkers.abstraction;
+package ru.spbau.shestavin.drunkers.core;
 
 
 import java.util.*;
@@ -11,7 +11,7 @@ public abstract class FieldObject {
         this.cell = inpCell;
     }
 
-    public FieldObject() {
+    protected FieldObject() {
         this.cell = null;
     }
 
@@ -27,7 +27,7 @@ public abstract class FieldObject {
         return this.cell != null;
     }
 
-    void putOnField(Cell inpCell) {
+    public void putOnField(Cell inpCell) {
         this.cell = inpCell;
     }
 
@@ -48,11 +48,9 @@ public abstract class FieldObject {
     protected static Queue<Cell> findPath(Cell inpSource, Cell inpDestination) {
         Queue<Cell> q = new LinkedList<Cell>();
         Set<Cell> used = new HashSet<Cell>();
-        //Map<Cell, Integer> dist = new HashMap<Cell, Integer>();
         Map<Cell, Cell> prev = new HashMap<Cell, Cell>();
         q.offer(inpSource);
         used.add(inpSource);
-        //dist.put(inpSource, 0);
         prev.put(inpSource, null);
         while (!q.isEmpty()) {
             Cell v = q.poll();
@@ -60,7 +58,6 @@ public abstract class FieldObject {
                 if (!used.contains(neighbor) && (neighbor.isEmpty() || neighbor == inpDestination)) {
                     used.add(neighbor);
                     q.offer(neighbor);
-                    //dist.put(neighbor, dist.getLine(v) + 1);
                     prev.put(neighbor, v);
                 }
             }

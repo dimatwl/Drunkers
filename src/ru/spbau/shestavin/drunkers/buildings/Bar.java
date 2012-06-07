@@ -1,9 +1,9 @@
 package ru.spbau.shestavin.drunkers.buildings;
 
 
-import ru.spbau.shestavin.drunkers.abstraction.Cell;
-import ru.spbau.shestavin.drunkers.abstraction.FieldObject;
 import ru.spbau.shestavin.drunkers.characters.Drunker;
+import ru.spbau.shestavin.drunkers.core.Cell;
+import ru.spbau.shestavin.drunkers.core.FieldObject;
 
 public class Bar extends FieldObject {
     private int turnNumber = 0;

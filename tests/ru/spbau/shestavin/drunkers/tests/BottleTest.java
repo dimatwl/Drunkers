@@ -1,7 +1,7 @@
 package ru.spbau.shestavin.drunkers.tests;
 
 import org.junit.Test;
-import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.core.Cell;
 import ru.spbau.shestavin.drunkers.characters.Bottle;
 
 import static org.junit.Assert.assertEquals;

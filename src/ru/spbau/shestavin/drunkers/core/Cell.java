@@ -1,20 +1,23 @@
-package ru.spbau.shestavin.drunkers.abstraction;
+package ru.spbau.shestavin.drunkers.core;
 
 
-import com.sun.tools.javac.util.Pair;
-
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Cell {
-    private final Pair<Integer, Integer> coordinates;
+    private final Point coordinates;
     private FieldObject object = null;
     private final List<Cell> neighbours = new ArrayList<Cell>();
     private boolean illumination = false;
 
-    public Cell(Pair<Integer, Integer> inpCoordinates) {
+    public Cell(Point inpCoordinates) {
         this.coordinates = inpCoordinates;
+    }
+
+    public Cell(Integer fst, Integer snd) {
+        this.coordinates = new Point(fst, snd);
     }
 
     public void addNeighbour(Cell inpNeighbour) {
@@ -25,7 +28,7 @@ public class Cell {
         return this.neighbours;
     }
 
-    public Pair<Integer, Integer> getCoordinates() {
+    public Point getCoordinates() {
         return this.coordinates;
     }
 
@@ -68,6 +71,6 @@ public class Cell {
     }
 
     public int distTo(Cell inpCell) {
-        return Math.abs(this.coordinates.fst - inpCell.coordinates.fst) + Math.abs(this.coordinates.snd - inpCell.coordinates.snd);
+        return Math.abs(this.coordinates.x - inpCell.coordinates.x) + Math.abs(this.coordinates.y - inpCell.coordinates.y);
     }
 }

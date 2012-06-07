@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.mockito.ArgumentMatcher;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
-import ru.spbau.shestavin.drunkers.abstraction.Cell;
+import ru.spbau.shestavin.drunkers.core.Cell;
 import ru.spbau.shestavin.drunkers.buildings.Bar;
 import ru.spbau.shestavin.drunkers.characters.Drunker;
 
